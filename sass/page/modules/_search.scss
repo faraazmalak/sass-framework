@@ -1,0 +1,6 @@
+.form-search{
+
+    margin-top: 5px;
+    .input-text{ @include text-box-size(small); } 
+    .button{@include button(cart-button);}
+}

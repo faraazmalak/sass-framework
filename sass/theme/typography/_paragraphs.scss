@@ -1,0 +1,32 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+$include-paragraph-classes: true;
+
+//Paragraph Configuration
+$paragraph-config: null;
+
+//Paragraph Inset Configuration
+$paragraph-inset: padding 15px, width 20%;
+$paragraph-inset-left: null;
+$paragraph-inset-right: null;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                CORE
+
+------------------------------------------------------------------------------*/
+
+@if $include-paragraph-classes == true{
+    p, .paragraph{
+        @include style($paragraph-config);
+        .inset-left, .inset-right{@include style($paragraph-inset)}
+        .inset-left{@extend .float-left; @include style($paragraph-inset-left)}
+        .inset-right{@extend .float-right; @include style($paragraph-inset-right)}
+    }
+
+}

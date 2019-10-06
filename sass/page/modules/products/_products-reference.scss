@@ -1,0 +1,321 @@
+/*------------------------------------------------------------------------------ 
+
+                              CATEGORY-VIEW PRODUCTS
+
+------------------------------------------------------------------------------*/
+.category-product-list {
+
+    //Import Modules
+    @import 'product/ratings-reviews';
+    
+   
+    .product-module .link,
+    .price-label,
+    .price,
+    .ratings-reviews .link{
+        font:{weight:normal; size: 11px; family: Arial}
+        color: color(dark-gray);
+    }
+    
+    .product-module .link:not(.product-image-link),
+    .ratings-reviews .link{
+        @extend %gray-link-with-underline;
+        line-height: 11px;
+        font-size: 11px;
+    }
+    .product-name{
+        margin:3px 0 8px;
+        .link{font-weight: bold;}
+    }
+
+    .product-image-container{text-align: center}
+    
+    .cart-button{
+        @include use-button(medium-button-with-orange-font);
+    }
+
+
+
+    &.grid-view{
+
+        padding-left: 20px;
+
+        .product{
+            width: 164px;
+            height: 329px;
+            margin: 0 19px 0 0;
+        }
+
+
+        .product-module{text-align: center;}
+
+        .price-tag{margin-top: 4px;}
+
+
+        .ratings-reviews{
+            margin-bottom: 10px;
+            @include height($line-height: 13px, $height: 13px);
+            .rating-review-links, .rating-box{@include inline-block();}
+        }
+
+
+
+
+    }
+
+    &.list-view{
+
+        .product{
+
+            border-bottom: 1px dotted color(medium-gray);
+            margin-bottom: 20px;
+            display: block;
+
+            .short-description{
+                font-size: 12px;
+                text-align: left;
+                margin-bottom: 8px;
+                line-height: 16.2px;
+                padding-right: 20px;
+            }
+
+            .rating{margin-right: 15px}
+
+            .price-tag{margin: 5px 0 10px 0;}
+
+        }
+    }
+
+
+
+
+}
+/*------------------------------------------------------------------------------ 
+
+                               SHARED PRODUCT STYLES
+
+------------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                             PRODUCT DESCRIPTION PAGE
+
+------------------------------------------------------------------------------*/
+.product-view{
+    border-left: 1px solid color(medium-gray); 
+    border-right: 1px solid color(medium-gray); 
+
+    .product-sku{display: none;}
+    .product-name{font-size: 22px; color: color(orange); font-weight: normal;}
+
+    .product-shop{
+        @include use-style(white-gray-gradient);
+        border-bottom: 1px solid color(medium-gray); 
+        padding: 20px 30px 5px 30px;
+
+    }
+    .product-images{
+        text-align:center;  
+        padding-top: 30px;
+        #image{width: 370px; height: 370px;}
+    }
+
+    .right-col-content{ border-left: 1px solid color(medium-gray); padding-bottom :30px; }
+
+    .availability-status{margin: 10px 0;}
+
+
+    .price-tag{
+        font-size: 14px;
+        font-weight: 700;
+
+    }
+
+    .grouped-items-table{
+
+        width: 414px;
+        height: 174px;
+        border: 1px solid color(medium-gray);
+        .table-heading{
+            padding: 0 12px; 
+            height: 15px;
+            font-size: 11px; 
+            text-transform: uppercase; 
+            color: color(dark-gray); 
+            font-weight: 400; 
+
+            @include use-style(white-gray-gradient);
+        }
+
+        .table-heading.product-name{width: 205px; text-align: left;}
+        .table-heading.price{width: 149px; text-align: right;}
+        .table-heading.qty{width: 50px;}
+
+        .table-data{
+            font-size: 11px;
+            font-weight: 400;
+
+        }
+
+        .table-data.product-name{
+            width: 169px;
+            height: 39px;
+            color: color(dark-gray);
+            padding-left: 12px;
+        }
+
+        .table-data .price-tag{text-align: right;}
+
+        .table-data.qty{ text-align: center;}
+        .table-data .input-text{
+            width: 34px;
+            height: 19px;
+
+            display: inline-block;
+
+        }
+
+        tr:nth-child(even){background-color: color(light-gray);}
+        tr:nth-child(odd){background-color: color(white);}
+        tr{padding-left: 12px;}
+    }
+
+    .product-attribute-specs-table{
+
+        width: 362px;
+        height: 109px;
+        margin: 0 auto;
+
+        border: 1px solid color(medium-gray);
+
+        .table-heading, .table-data{color: color(dark-gray); font-size: 12px; font-weight: 700; text-align: left;}
+
+        .table-data{font-weight: 400; width: 231px; padding-left: 12px;}
+        .table-data:nth-child(odd){background-color: color(light-gray);}
+
+        .table-heading{width: 107px; padding-left: 12px; background-color: color(medium-gray);  }
+
+        tr:not(:last-child){border-bottom: 1px solid color(white);}
+    }
+
+    .cart-button{
+        @include use-style(white-font-orange-gradient);
+    }
+
+    .add-to-actions{
+        padding: 30px 30px 0 30px;;
+        .add-to-wish-link, .add-to-compare-link{display: block; }
+
+        .input-qty{width: 34px; height: 19px; margin-right: 8px;}
+
+        .label, .input-qty, .cart-button{display: inline-block;}
+
+        .label{font-weight: 700; color: color(dark-gray); text-transform: none; margin-right: 5px;}
+    }
+
+    .short-description{display: none;}
+
+    .product-info-tabs{margin-top: 30px;}
+
+    .email-to-friend{padding: 20px 0 0 10px; .icon{width: 6px; height: 8px; margin-top: 3px; margin-right: 5px;} }
+
+    .product-tags,
+    .similar-products{
+
+        .heading{
+            color: color(navy-blue); 
+            font-size: 14px;
+            @include use-style(white-gray-gradient);
+            //@include background-image(linear-gradient($light-gray 50%, lighten($medium-gray, 10%) 50%)); 
+            height: 27px; 
+            line-height: 27px;
+            padding-left: 20px;
+            border-top: 1px solid color(medium-gray);
+            border-bottom: 1px solid color(medium-gray);
+            margin: 0;
+        }
+
+    }
+}
+/*------------------------------------------------------------------------------ 
+
+                                  UPSELL PRODUCTS
+
+------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------ 
+
+                                CROSSSELL PRODUCTS
+
+------------------------------------------------------------------------------*/
+.checkout-cart .crosssell-product-list .product{
+    .product{
+
+        margin: 17px 0 0 0;
+        .col-right{padding-left: 10px;}
+
+    }
+
+
+    .product-name .link {
+        @include use-style(gray-link-with-underline); 
+        font-size: 12px; 
+        font-weight: 700;
+        
+    }
+
+    .product-name, .price{ margin-bottom: 5px;}
+    .price{font:{size: 11px; weight: 700; } color: color(dark-gray)}
+
+    .cart-button{@include use-button(medium-button-with-orange-font)}
+
+    .add-to-actions .link{color: #999999; text-decoration: underline}
+
+
+}
+
+/*------------------------------------------------------------------------------ 
+
+                              SHOPPING-CART PRODUCTS
+
+------------------------------------------------------------------------------*/
+.checkout-cart .cart-items-table{
+    width:100%;
+    .th{
+        text-align: center;
+        @include use-style(medium-dark-gray-gradient);
+        height: 25px;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: color(dark-gray);
+
+        &.product-name{width: 516px; text-align: left}
+        &.product-price{width: 77px}
+        &.product-qty{width: 60px}
+        &.subtotal{width: 78px}
+        &.remove-product{width: 67px}
+    }
+    .shopping-cart-body .td{
+        text-align: center;
+        .edit-product-link, .product-name .link{
+            @extend %gray-link-with-underline;
+        }
+        .product-name{
+            .link{font-weight: bold;}
+            text-align: left;
+        }
+        .product-qty-text-input{width: 34px; @include height(19px)}
+        .price{font-size: 11px; color: color(dark-gray)}
+
+    }
+    .shopping-cart-footer{
+        background-color: color(light-gray);
+        height: 31px;
+        .continue-shopping-link{@extend %gray-link-with-underline;}
+
+    }
+
+
+}

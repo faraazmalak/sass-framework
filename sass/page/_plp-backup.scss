@@ -1,0 +1,134 @@
+.catalog-category-view{
+
+    .main-content{max-width: 580px}
+    .content-wrapper{border: 1px solid color(medium-gray)}
+
+    .category-view{
+        /*------------------------------------------------------------------------------ 
+        
+                                      PLP MODULES
+        
+        ------------------------------------------------------------------------------*/
+
+        @import 'modules/product/ratings-reviews';
+
+        /*------------------------------------------------------------------------------ 
+        
+                                     GLOBAL STYLING
+        
+        ------------------------------------------------------------------------------*/
+
+        border-left: 1px solid color(medium-gray);
+        border-right: 1px solid color(medium-gray);
+
+
+        /*------------------------------------------------------------------------------ 
+        
+                                     PRODUCT STYLING
+        
+        ------------------------------------------------------------------------------*/
+        .product-list {
+
+
+            .price-tag,.product-name .link,.add-to-actions .link, .ratings-reviews .link, .learn-more-link{
+                //font: normal 11px Arial;
+                // font-size: 11px !important;
+                font:{weight:normal; size: 11px; family: Arial}
+                color: color(dark-gray);
+            }
+            .product-name .link,.add-to-actions .link, .ratings-reviews .link, .learn-more-link{
+                @extend %gray-link-with-underline;
+                line-height: 11px;
+                font-size: 11px;
+            }
+            .product-name{
+                margin:3px 0 8px;
+                .link{font-weight: bold;}
+            }
+
+            .product-image-container{text-align: center}
+            .cart-button{
+                //@include use(button-with-orage-font);
+                @include use-button(medium-button-with-orange-font);
+                //@extend %button-with-orange-font;
+
+
+            }
+
+
+
+            &.grid-view{
+
+                padding-left: 20px;
+
+                .product{
+                    width: 164px;
+                    height: 329px;
+                    margin: 0 19px 0 0;
+                }
+
+
+                .price-tag,.product-name, .add-to-actions, .ratings-reviews{
+                    text-align: center; 
+
+                }
+
+                .product-name .link, .add-to-actions .link, .total-ratings-link{
+                    text-align: center;
+                }
+
+                .price-tag{margin-top: 4px;}
+
+
+                .ratings-reviews{
+                    margin-bottom: 10px;
+                    @include height($line-height: 13px, $height: 13px);
+                    .rating-review-links, .rating-box{@include inline-block();}
+                }
+
+
+
+
+            }
+
+            &.list-view{
+
+                .product{
+
+                    border-bottom: 1px dotted color(medium-gray);
+                    margin-bottom: 20px;
+                    display: block;
+
+
+
+                    .short-description{
+                        font-size: 12px;
+                        text-align: left;
+                        margin-bottom: 8px;
+                        line-height: 16.2px;
+                        padding-right: 20px;
+                    }
+
+                    .rating{margin-right: 15px}
+
+                    .price-tag{margin: 5px 0 10px 0;}
+
+                }
+            }
+
+
+
+
+        }
+
+
+
+    }
+
+    /*------------------------------------------------------------------------------ 
+       
+                                  SIDEBAR STYLING
+       
+    ------------------------------------------------------------------------------*/
+    .sidebar-right{min-width: 201px;}
+}

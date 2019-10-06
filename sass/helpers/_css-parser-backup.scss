@@ -1,0 +1,582 @@
+@function is-css-property($target-property){
+
+    $property-lookup-list:
+
+        'animation',
+        'animation-name',
+        'animation-duration',
+        'animation-timing-function',
+        'animation-delay',
+        'animation-iteration-count',
+        'animation-direction',
+        'animation-play-state',
+
+        'appearance',
+
+        'backface-visibility',
+
+        'background',
+        'background-attachment',
+        'background-color',
+        'background-image',
+        'background-position',
+        'background-repeat',
+        'background-clip',
+        'background-origin',
+        'background-size',
+
+        'border',
+        'border-bottom',
+        'border-bottom-color',
+        'border-bottom-style',
+        'border-bottom-width',
+        'border-collapse',
+        'border-color',
+        'border-left',
+        'border-left-color',
+        'border-left-style',
+        'border-left-width',
+        'border-right',
+        'border-right-color',
+        'border-right-style',
+        'border-right-width',
+        'border-spacing',
+        'border-style',
+        'border-top',
+        'border-top-color',
+        'border-top-style',
+        'border-top-width',
+        'border-width',
+        'border-bottom-left-radius',
+        'border-bottom-right-radius',
+        'border-image',
+        'border-image-outset',
+        'border-image-repeat',
+        'border-image-slice',
+        'border-image-source',
+        'border-image-width',
+        'border-radius',
+        'border-top-left-radius',
+        'border-top-right-radius',
+
+        'caption-side',
+
+        'clear',
+
+        'clip',
+
+        'color',
+
+        'content',
+
+        'counter-increment',
+        'counter-reset',
+
+        'cursor',
+
+        'direction',
+
+        'display',
+
+        'empty-cells',
+
+        'float',
+
+        'font',
+        'font-family',
+        'font-size',
+        'font-style',
+        'font-variant',
+        'font-weight',
+        '@font-face',
+        'font-size-adjust',
+        'font-stretch',
+
+        'text-align',
+        'text-decoration',
+        'text-indent',
+        'text-justify',
+        'text-outline',
+        'text-overflow',
+        'text-shadow',
+        'text-transform',
+        'text-wrap',
+
+
+        'line-height',
+        'letter-spacing',
+
+        'list-style',
+        'list-style-image',
+        'list-style-position',
+        'list-style-type',
+
+        'hanging-punctuation',
+
+        'height',
+        'min-height',
+        'max-height',
+        'width',
+        'min-width',
+        'max-width',
+
+        'icon',
+
+        'margin',
+        'margin-left',
+        'margin-right',
+        'margin-top',
+        'margin-bottom',
+
+        'opacity',
+
+        'outline',
+        'outline-color',
+        'outline-offset',
+        'outline-style',
+        'outline-width',
+
+        'overflow',
+        'overflow-x',
+        'overflow-y',
+
+        'page-break-after',
+        'page-break-before',
+        'page-break-inside',
+
+        'position',
+
+        'punctuation-trim',
+
+        'quotes',
+
+        'resize',
+
+        'rotation',
+
+        'rotation-point',
+
+        'table-layout',
+
+        'target',
+        'target-name',
+        'target-new',
+        'target-position',
+
+        'transform',
+        'transform-origin',
+        'transform-style',
+
+        'transition',
+        'transition-property',
+        'transition-duration',
+        'transition-timing-function',
+        'transition-delay',
+
+        'vertical-align',
+
+        'visibility',
+
+        'white-space',
+
+        'word-spacing',
+
+        'word-break',
+
+        'word-wrap',
+
+        'z-index',
+
+        'padding',
+        'padding-left',
+        'padding-right',
+        'padding-top',
+        'padding-bottom',
+
+        'top',
+        'right',
+        'bottom',
+        'left',
+
+        'position'
+        'display',
+
+        'class';
+
+    @each $property in $property-lookup-list{
+
+        @if $property == $target-property{
+
+            @return true;
+        }
+    }
+
+
+    @return false;
+
+
+
+}
+
+
+@function is-prefix($target-prefix){
+
+    $prefix-lookup-list:
+
+        'animation',
+
+        'background',
+
+        'border',
+
+        'counter',
+
+        'font',
+
+        'text',
+
+
+        'list-style',
+
+        'min',
+        'max',
+
+
+        'margin',
+
+
+        'outline',
+
+        'overflow',
+
+        'page-break',
+
+        'rotation',
+
+
+
+        'target',
+
+
+        'transform',
+
+
+        'transition',
+
+
+
+        'word',
+
+
+        'padding'
+
+
+        ;
+
+    @each $prefix in $prefix-lookup-list{
+
+        @if $prefix == $target-prefix{
+
+            @return true;
+        }
+    }
+
+
+    @return false;
+
+
+
+}
+
+
+@function is-state($state){
+    $state: to-string($state);
+
+    @if $state == hover or $state == click or $state == active or $state == focus or $state == normal{
+
+        @return true;
+    }
+    @else{
+        @return false;
+    }
+}
+
+$master-config: null;
+
+$normal-state: null;
+$hover-state: null;
+$active-state: null;
+$focus-state: null;
+@function add-state($list,$state:normal){
+
+    //@debug STATE $state LIST $list;
+    @if is-state($state) and type-of(flatten($list)) == list{
+
+        $state: to-string($state);
+        @if $state == normal{
+            $normal-state: purge(flatten(append($normal-state,$list)));
+
+        }
+        @else if $state == hover{
+            $hover-state: purge(flatten(append($hover-state,$list)));
+        }
+
+    }
+
+    @return true;
+}
+
+
+@function add-prefix($list,$prefix:null,$is-important: false){
+
+    $output-list: null;
+    $prefix: unquote(to-string($prefix,''));
+    //@debug PREFIX $prefix is-prefix($prefix) type-of($prefix) $list;
+    @if (is-prefix($prefix) or $is-important)  and type-of($list) == list and length(flatten($list)) > 2{
+
+
+        $list: flatten($list);
+        //    $state: to-string($state);
+
+        $i:1;
+        @while $i !=false{
+            $property-name: unquote(nth($list,$i));
+            // @debug PREFIX $prefix nth($list,1) $i $list length($list);
+            @if $prefix != null{ $property-name: unquote($prefix + '-' + nth($list,$i));}
+            //@if $return-list != null{$property-name: unquote(', '+$property-name)}
+            $property-value: nth($list,$i+1);
+            @if $is-important {$property-value: unquote($property-value + '!important');}
+            //@debug LOCAL PROPERTY NAME $property-name VALUE $property-value;
+            $output-list: append($output-list, union($property-name,$property-value));
+
+            @if ($i + 2) > length($list) {$i: false}
+            @else{$i: $i + 2;}
+        }
+
+
+        //@debug OUTPUT LIST $output-list LENGTH length(flatten($output-list));
+
+    }@else if is-state($prefix){
+        @return $list;
+    }
+
+    $output-list: flatten($output-list);
+    @return $output-list;
+}
+
+@function is-processed($list){
+    $list: flatten($list);
+    @each $packet in $list{
+       @debug PACKET $packet length(unquote($packet));
+    }
+    @return true;
+}
+
+@function normalize-NEW($config-list){
+
+   // $master-config: append($master-config,$config-list);
+
+    $iteration: 1;
+    @while $iteration != false{
+
+        //@debug Master List $master-config;
+        $key: slice($config-list,$iteration,$iteration);
+        // $key: flatten($key);
+        $value: null;
+        //@debug $iteration $key $value;
+        //@debug RAW LIST $key;
+        @if type-of($key) == list{
+
+            @if  length(flatten($key)) == 2{
+                //Config of type: font-weight bold, font-size normal;
+                //Config of type: font-weight bold;
+                $value: nth(flatten($key),2);
+                $key: nth(flatten($key),1);
+
+                $master-config: append($master-config,unquote('packet state normal, '+$key+' '+$value+''),space);
+
+            }@else if length(flatten($key)) > 2{
+
+                //Config of type: font-weight bold, font-size normal, text (transform none, indent 2px);
+                $value: slice(flatten($key),i2,length(flatten($key)));
+                $key: slice(flatten($key),1,1);
+                $state: normal;
+                @if is-state($key){
+                    $value: add-prefix($value,$key);
+                    $state: $key;
+                }
+                 $master-config: append($master-config,unquote('packet state '+$state+', '+$value+''),space);
+                /*$state: normal;
+
+                $value: add-prefix($value,$key);
+
+                @if is-state($key){$state: $key;}
+
+
+                $temp: add-state($value,$state);*/
+
+                //@debug value $value key $key;
+            }
+
+
+            $iteration: $iteration + 1;
+            //@debug KEY $key;
+        }
+        @else { 
+            //Config of type: text (transform none,indent 2px,spacing 5px);
+            $value: slice($config-list,$iteration+1,$iteration+1); $iteration: $iteration + 2;
+            //$temp: add-state(($key,$value));
+             $master-config: append($master-config,unquote('packet state normal, '+$value+''),space);
+        }
+
+
+
+
+
+        @if $key == false or $value == false{$iteration: false;}
+
+
+
+
+    }
+
+    $temp:is-processed($master-config);
+   // @debug Master Config $master-config;
+   
+    @return null;
+
+}
+
+$current-state: normal;
+@function normalize($config-list){
+
+    $master-config: $config-list;
+
+    //$config-list: flatten($config-list);
+    $iteration: 1;
+    @while $iteration != false{
+        //@debug Master List $master-config;
+        $key: slice($config-list,$iteration,$iteration);
+        // $key: flatten($key);
+        $value: null;
+        //@debug $iteration $key $value;
+        //@debug RAW LIST $key;
+        @if type-of($key) == list{
+
+            @if  length(flatten($key)) == 2{
+                //Config of type: font-weight bold, font-size normal;
+                //Config of type: font-weight bold;
+                $value: nth(flatten($key),2);
+                $key: nth(flatten($key),1);
+
+                $temp: add-state(($key,$value));
+                $normal-state: append($normal-state,($key,$value),space);
+
+            }@else if length(flatten($key)) > 2{
+
+                //Config of type: font-weight bold, font-size normal, text (transform none, indent 2px);
+                $value: slice(flatten($key),2,length(flatten($key)));
+                $key: slice(flatten($key),1,1);
+                $state: normal;
+
+                $value: add-prefix($value,$key);
+
+                @if is-state($key){$state: $key;}
+
+
+                $temp: add-state($value,$state);
+
+                //@debug value $value key $key;
+            }
+
+
+            $iteration: $iteration + 1;
+            //@debug KEY $key;
+        }
+        @else { 
+            //Config of type: text (transform none,indent 2px,spacing 5px);
+            $value: slice($config-list,$iteration+1,$iteration+1); $iteration: $iteration + 2;
+            $temp: add-state(($key,$value));
+        }
+
+        //$temp: add-state( add-prefix($value,$prefix:$key), $key );
+        // $temp: add-state( add-prefix($value,$prefix:$key), $key );
+
+        //If value is not a list and its not false
+        @if $value {
+
+            // $normal-state: append($normal-state,union($key, $value));
+        }
+
+
+
+
+        @if $key == false or $value == false{$iteration: false;}
+
+
+
+
+    }
+    $iteration: 1;
+    @return null;
+}
+@mixin print-css($list){
+    $list: flatten($list);
+    //@debug NORMAL STATE OUTPUT $list of length length($list);
+    // @debug PRINT CSS $list length($list);
+    //$list: purge($list);
+    $iteration: 1;
+    // @debug PURGED PRINT CSS $list length($list);
+    @while $iteration != false{
+        //@debug ITERATION $iteration nth($list,$iteration) nth($list,$iteration+1);
+        $property-name: nth($list,$iteration);
+        $property-value: nth($list,$iteration+1);
+
+        @if $property-name  == class{
+            $property-value:unquote('.'+$property-value);
+            @extend #{$property-value};
+        }
+        @else{
+            #{$property-name}: #{$property-value};
+        }
+
+
+        @if ($iteration + 2) > length($list){$iteration: false;}
+        @else{$iteration: $iteration + 2;}
+    }
+}
+@mixin style($config-list){
+
+    @if $config-list != null{
+
+        // @debug $config-list length($config-list);
+        //  $config-list: normalize($config-list);
+        //@debug NORMALIZED LIST $config-list length($config-list) type-of(nth($config-list,2));
+
+        $temp: normalize($config-list);
+        //$normal-state: flatten($hover-state);
+
+        /*@include print-css($normal-state);
+
+        @if $hover-state != null{
+            &:hover{
+                @include print-css($hover-state);   
+            }
+        }
+
+        @if $active-state != null{
+            &:active{
+                @include print-css($active-state);   
+            }
+        }
+
+        @if $focus-state != null{
+            &:focus{
+                @include print-css($active-focus);   
+            }
+        }*/
+
+    }
+
+
+}

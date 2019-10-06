@@ -1,0 +1,24 @@
+
+
+.dashboard{
+
+    margin-top: 5px;
+
+    .nav-pill{font-size: 11px; font-weight: 400; text-transform: uppercase;  @include set-pill-spacing(5px);  .link{color: $blue; text-decoration: none;}}
+    .nav-pill:not(:last-child):after {content:"  |  ";}
+
+    
+    .my-cart-link, .checkout-link{font-weight: 700;}
+
+    .form-search{
+
+        margin-top: 5px;
+ 
+        .input-text{width: 185px; height: 23px; padding: 3px 7px; } 
+        .button{
+            width: 46px; height: 21px; 
+        }
+    }
+    
+}
+

@@ -1,0 +1,35 @@
+.wrapper{
+    
+   
+    background-color: $white;
+    width: 100%;
+
+    &:not(.cms-enterprise-home) .content-wrapper{border-bottom: 1px solid $medium-gray; }
+   &.catalog-category-view { 
+           .content-wrapper{border: 1px solid $medium-gray;}
+           //.sidebar-right{border-left: 1px solid $medium-gray; }
+           .category-view{border-left: 1px solid $medium-gray; border-right: 1px solid $medium-gray; }
+   }
+
+
+    .page   {
+   
+        margin-bottom: 22px;
+        
+        
+        .header {
+            margin-bottom: 24px;
+            .header-panel{height: 82px;margin-top: emCalc(17)}
+        }
+
+
+        
+        .footer{
+            margin-top: 16px;
+           
+        }
+      
+    }
+}
+
+

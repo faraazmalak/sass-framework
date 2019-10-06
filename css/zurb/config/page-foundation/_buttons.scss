@@ -1,0 +1,68 @@
+//
+// Button Variables
+//
+/***************************General Settings***********************************/
+
+
+// Use this to control the display property.
+
+ $button-display: inline-block;
+ $button-margin-bottom: emCalc(0);
+
+// Use these to control various hover effects.
+
+ $button-function-factor: 10%;
+
+// Use this to set default opacity for disabled buttons.
+
+ $button-disabled-opacity: 0.6;
+
+/***************************Borders & Padding***********************************/
+// Use these to build padding for buttons.
+
+ $button-med: emCalc(12);
+ $button-tny: emCalc(7);
+ $button-sml: emCalc(9);
+ $button-lrg: emCalc(16);
+
+
+// Use these to control button border styles.
+
+ $button-border-width: 1px;
+ $button-border-style: solid;
+
+
+// Use this to set the default radius used throughout the core.
+
+ $button-radius: $global-radius;
+ $button-round: $global-rounded;
+
+/***************************Font Settings***********************************/
+// Use these to control button text styles.
+
+ $button-font-family: inherit;
+ $button-font-color: #fff;
+ $button-font-color-alt: #333;
+ $button-font-med: emCalc(16);
+ $button-font-tny: emCalc(11);
+ $button-font-sml: emCalc(13);
+ $button-font-lrg: emCalc(20);
+ $button-font-weight: bold;
+ $button-font-align: center;
+
+
+/********************************** Button Border classes ****************************/
+
+.button.borderless{
+    border: none;
+
+}
+
+
+/********************************** Button Theme Configuration ****************************/
+
+.button.pink{ background-color: $trendy-pink !important; color: $white !important;}
+.button.black{ background-color: $black !important; color: $white !important;}
+.button.dark-gray{background-color: $dark-gray !important; color: $white !important;}
+.button.borderless{border: none !important;}
+

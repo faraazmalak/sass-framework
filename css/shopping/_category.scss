@@ -1,0 +1,17 @@
+.catalog-category-view
+{
+
+    .main-content{max-width: 580px}
+    .sidebar-right{min-width: 201px;}
+    .category-image{
+        width: 625px;
+        height: 250px;
+    }
+
+    .category-view{
+        border-left: 1px solid $medium-gray;
+        border-right: 1px solid $medium-gray;
+        padding-bottom: 20px
+    }
+    
+}

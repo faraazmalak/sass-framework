@@ -1,0 +1,34 @@
+
+
+.newsletter-form{
+
+    margin: 22px 0 0 17px;
+    
+
+    .label{margin-bottom: 8px; 
+           font: {size: 11px; weight: 700;} 
+           color: color(orange); 
+           text-transform: uppercase;
+           display: inline-block;
+    }
+
+    .button{
+        @include button(cart-button);
+        float: right;
+        margin-top: 6px;
+       
+    }
+    .newsletter-form-controls{ width: 183px;}
+    .input-text{
+       // height: 21px;        
+        //padding: 2px 12px;
+        @include text-box-size(small);
+
+    }
+
+
+
+
+}
+
+

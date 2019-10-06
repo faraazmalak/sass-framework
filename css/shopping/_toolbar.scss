@@ -1,0 +1,44 @@
+
+
+.catalog-category-view  .toolbar{
+
+    > .row{
+
+        background: linear-gradient($white, darken($light-gray,3%));
+        @include establish-height($line-height: 23px, $height: 27px, $v-align:middle, $child-height: 100%, $child-content-v-align: middle);
+        border-bottom: 1px solid $medium-gray;
+
+        &:first-child{ border-top: 1px solid $medium-gray;}
+    }
+
+    &.toolbar-top{margin-bottom: 25px;}
+
+    .view-mode{
+
+        
+        display: inline-block;
+        .view-mode-label, .view-mode-link{
+           
+           
+           width: 23px;
+           height: 17px;
+
+        }
+    }
+
+    .sort-by{
+        display: inline-block;
+        //float: right;
+    }
+
+    .label{font-size: 11px; font-weight: 400;}
+
+    select{
+
+            font-size: 12px;
+    height: 20px;
+    text-transform: none;
+    width: 82px;
+    }
+
+}

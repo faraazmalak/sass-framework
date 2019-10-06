@@ -1,0 +1,29 @@
+.wrapper{
+    
+    border-top: 36px solid black;
+    background-color: $white;
+    width: 100%;
+
+    .page   {
+   
+        margin-top: -36px;
+        padding: 0 18px;
+        header {.header-panel{height: 82px;margin-top: emCalc(17)}}
+
+       
+        .footer{
+
+                .legal-section{height: 39px;}
+
+        }
+    }
+}
+
+
+.wrapper.catalog-category-view {
+
+    .content-wrapper{padding-left: 30px;}
+
+}
+
+

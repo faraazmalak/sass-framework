@@ -1,0 +1,86 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-link-classes: true;
+
+$link:
+text-transform none,
+line-height inherit,
+display inline-block,
+text-decoration none,
+color color(light-blue), 
+hover (color color(orange));
+
+$email-link: null;
+
+$url-link-internal: null;
+$url-link-external: null;
+
+/*------------------------------------------------------------------------------ 
+
+                                   CORE
+
+------------------------------------------------------------------------------*/
+%link-normalize{
+    //
+    // Address `outline` inconsistency between Chrome and other browsers.
+    //
+
+    a:focus {
+        /*outline: thin dotted;*/
+        //Modified by Faraaz
+        outline: 0;
+    }
+
+    //
+    // Improve readability when focused and also mouse hovered in all browsers.
+    //
+
+    a:active, a:hover {
+        outline: 0;
+    }
+
+    img, .img { border:none; }
+}
+
+
+@if $include-link-classes == true{
+    a, .link{
+        @extend %link-normalize;
+        @include style($link);
+    }
+    .email-link{
+        @extend %link-normalize;
+        @include style($email-link);
+    }
+
+    .url-link-internal{
+        @extend %link-normalize;
+        @include style($url-link-internal);
+    }
+    .url-link-external{
+        @extend %link-normalize;
+        @include style($url-link-external);
+    }
+
+}
+
+//Mixins
+@mixin use-link($link-style){
+    @include style($link-style);
+}
+
+/*------------------------------------------------------------------------------ 
+
+                               LINK STYLES
+
+------------------------------------------------------------------------------*/
+//Styles
+%gray-link-with-underline{
+    color: color(dark-gray);
+    @include use-style(dark-gray-underline);
+    line-height: 11px;
+    font-size: 11px;
+}

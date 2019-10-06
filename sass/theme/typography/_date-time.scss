@@ -1,0 +1,46 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+$include-datetime-classes: false;
+
+//General Date Config
+$date-config: null;
+$date-day-config: null;
+$date-month-config: null;
+$date-year-config: null;
+
+
+//General Time Config
+$time-config:null;
+$time-hour-config:null;
+$time-minute-config:null;
+$time-sec-config:null;
+
+
+
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                                   CORE
+
+------------------------------------------------------------------------------*/
+
+@if $include-datetime-classes{
+    .date{
+        @include style($date-config);
+        .day{@include style($date-day-config);}
+        .month{@include style($date-month-config);}
+        .year{@include style($date-year-config);}
+    }
+     .time{
+         @include style($time-config);
+         .hour{@include style($time-hour-config);}
+         .min{@include style($time-min-config);}
+         .sec{@include style($time-sec-config);}
+     }
+}

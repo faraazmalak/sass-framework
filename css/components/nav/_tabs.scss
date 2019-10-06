@@ -1,0 +1,61 @@
+
+/************************** Tab Wrapper Configuration *************************/
+
+$tab-wrapper-margin: 0 auto;
+$tab-wrapper-height: 200px;
+$tab-wrapper-width: 416px;;
+
+
+/************************** Tab Label Configuration *************************/
+
+//Normal State
+$tab-label-bg: $medium-gray;
+
+$tab-label-border-radius: 5px 5px 0 0;
+
+$tab-label-margin: 0 5px 0 0;
+
+$tab-label-width: auto;
+$tab-label-height: 27px;
+$tab-label-line-height: $tab-label-height;
+
+$tab-label-padding: 0 10px 0 10px;
+
+$tab-label-border: 1px solid $medium-gray;
+
+$tab-label-font-family: Arial;
+$tab-label-font-size: 12px;
+$tab-label-font-weight: 400;
+$tab-label-font-color: $dark-gray;
+$tab-label-text-case: none;
+
+$tab-label-cursor: pointer;
+
+//Active State
+$active-tab-label-bg: $white;
+
+$active-tab-label-width: auto;
+$active-tab-label-height: auto;
+$active-tab-label-padding: $tab-label-padding;
+
+$active-tab-label-font-family: Arial;
+$active-tab-label-font-size: 12px;
+$active-tab-label-font-weight: 700;
+$active-tab-label-font-color: $dark-gray;
+$active-tab-label-text-case: none;
+
+
+/************************** Tab Content Configuration *************************/
+$tab-content-bg: $white;
+
+$tab-content-border-top: 1px solid $medium-gray;
+$tab-content-border-right: 1px solid $medium-gray;
+$tab-content-border-bottom: 1px solid $medium-gray;
+$tab-content-border-left: 1px solid $medium-gray;
+
+$tab-content-font-family: Arial;
+$tab-content-font-size: 12px;
+$tab-content-font-weight: 400;
+$tab-content-font-color: $dark-gray;
+$tab-content-text-case: normal;
+

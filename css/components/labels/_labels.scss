@@ -1,0 +1,17 @@
+//
+// Label Variables
+//
+/**********************************General Settings****************************/
+// We use these to style the labels
+
+   $label-padding: emCalc(3, 10, 4);
+   $label-radius: $global-radius;
+
+// We use these to style the label text
+   $label-font-family: $font-family-sans-serif; 
+   $label-text-case: none;
+   $label-font-sizing: 12px;
+   $label-font-weight: bold;
+   $label-font-color: $black;
+   $label-font-color-alt: #fff;
+   $label-background-color: transparent;

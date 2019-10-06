@@ -1,0 +1,88 @@
+
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$font-color-class-suffix: 'font';
+$bg-color-class-suffix: 'bg';
+
+/*------------------------------------------------------------------------------ 
+
+                                HEX VALUES
+
+------------------------------------------------------------------------------*/
+
+$color-palette:
+//Transparent 
+transparent 'transparent',
+
+//Gray-Scale
+white '#FFFFFF' (font-color),
+light-gray '#f8f8f8',
+medium-gray '#cfcfcf',
+dark-gray '#333333' (font-color),
+black '#000000',
+
+//Theme Colors
+orange '#D33911',
+golden '#ef5f00',
+light-blue '#1E75B4',
+dark-blue '#000333',
+rose-pink '#eddcd2',
+rose-pink-light '#FBF3F0',
+yellow '#f6ff00',
+
+
+//Special Color Codes
+warning 'red',
+alert '#ffe6c7',
+success '#1B6800',
+info '#1E75B4',
+muted '#f8f8f8';
+
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                                CORE
+
+------------------------------------------------------------------------------*/
+
+
+@each $color in $color-palette{
+    @if length($color) == 3{
+        $color-name: nth($color,1);
+        $color-value: nth($color,2);
+
+
+        $class-list: nth($color,3);
+
+        @each $class in $class-list{
+
+            @if $class == font-color{.#{$color-name}-#{$font-color-class-suffix}{color: unquote($color-value)}}
+            @else if $class == bg-color {.#{$color-name}-#{$bg-color-class-suffix}{background-color: unquote($color-value)}}
+
+
+        }
+
+    }
+}
+
+@function color($color-name, $color-palette: $color-palette ){
+    @if length($color-palette)== 2{
+        @if nth($color-palette,1) == $color-name{ @return unquote(nth($color-palette,2));}
+    }
+    @else{
+        @each $color in $color-palette{
+            @if nth($color,1) == $color-name{ @return  unquote(nth($color,2));}
+        }
+    }
+    @return null;
+    @warn 'No color value specified for' + $color-name
+}
+
+//@include parse-palette($color-palette);
+
+

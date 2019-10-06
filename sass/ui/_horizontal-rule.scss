@@ -1,0 +1,31 @@
+/*------------------------------------------------------------------------------ 
+
+                              CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-hr-classes: false;
+
+$hr-config: null;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                  CORE
+
+------------------------------------------------------------------------------*/
+%hr-normalize{
+    // Address differences between Firefox and other browsers.
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+
+    //Added by Faraaz
+    border-top-width: 1px;
+}
+@if $include-hr-classes{
+    .hr{
+        @extend %hr-normalize;
+        @include style($hr-config);
+    }
+
+}

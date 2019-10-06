@@ -1,0 +1,25 @@
+//
+// Side Nav Variables
+//
+// We use this to control padding.
+
+ $side-nav-padding: 10px 0 0 0;
+
+// We use these to control list styles.
+
+ $side-nav-list-type: none;
+ $side-nav-list-position: inside;
+ $side-nav-list-margin: emCalc(0, 0, 7, 0);
+
+// We use these to control link styles.
+
+ $side-nav-link-color: $medium-gray;
+ $side-nav-link-color-active: $primary-color;
+ $side-nav-font-size: emCalc(12);
+ $side-nav-font-weight: bold;
+
+// We use these to control border styles
+
+ $side-nav-divider-size: 1px;
+ $side-nav-divider-style: solid;
+ $side-nav-divider-color: darken(#fff, 10%);

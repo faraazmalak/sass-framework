@@ -1,0 +1,31 @@
+.nav{
+
+
+    &.main-nav{
+
+        margin-top: 9px;
+        width: 939px;
+        border: 1px solid $medium-gray;
+        @include border-radius(4px);
+
+        @include establish-height($height: 28px, $line-height: 28px, $v-align: top, $child-content-v-align: top);
+        @include background-image(linear-gradient(#F2F2F2 32%, #DEDEDE 63%));
+
+
+        > li{float: left;}
+
+        .button{
+
+             @include establish-height($height: 28px, $line-height: 28px, $v-align: top, $child-content-v-align: top);
+             .label{padding-top:0; padding-bottom:0; @include establish-height($height: 28px, $line-height: 29px, $v-align: top, $child-content-v-align: top );}
+            font-size: 13px; font-weight: bold; color: $dark-gray; padding: 0 9px 0 12px; border-right: 1px solid $light-gray 
+        }
+
+        .button:hover{
+            @include background-image(linear-gradient(#797979, $white));
+        }
+
+    }
+
+
+}

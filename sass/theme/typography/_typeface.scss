@@ -1,0 +1,105 @@
+
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-typeface-classes: true;
+/*********************************
+ Default Typeface Configuration
+*********************************/
+//Default Typefaces
+$typeface-sans-serif:  Arial,​Helvetica,​sans-serif ;
+$typeface-serif:       'Georgia, "Times New Roman", Times, serif';
+$typeface-monospace:   'Monaco, Menlo, Consolas, "Courier New", monospace';
+
+$base-typeface:        $typeface-sans-serif;
+
+//Default Typeface settings
+$base-font-size: 97%;
+$base-font-weight: normal;
+$base-line-height: 1;
+$base-word-spacing: normal;
+$base-letter-spacing: normal;
+
+$base-font-color: color('dark-gray');
+
+/*------------------------------------------------------------------------------ 
+
+                                CORE
+
+------------------------------------------------------------------------------*/
+
+
+
+/*********************************
+ MIXINS
+*********************************/
+@mixin typeface( $font-name, $weight, $style, $css-class: false, $font-files: false, $eot: false, $size: false, $line-height: false,  $letter-spacing: false, $word-spacing: false){
+
+    @if $css-class == false {$css-class: $font-name}
+
+    //Load custom font
+    @if $font-files{
+        $iefont: unquote("#{$eot}?#iefix");
+
+        @font-face {
+            font-family: quote($font-name);
+            @if $eot {
+                src: font-url($eot);
+                $font-files: font-url($iefont) unquote("format('embedded-opentype')"), $font-files;
+            }
+            src: $font-files;
+        }
+    }
+
+    @if $include-typeface-classes {
+        %#{$css-class}{
+            font-family: quote($font-name);
+            font-weight: $weight;
+            font-style: $style;
+
+            @if $size {font-size: $size}
+            @if $line-height { line-height: $line-height;}
+            @if $letter-spacing { letter-spacing: $letter-spacing;}
+            @if $word-spacing { word-spacing: $word-spacing;}
+
+
+        }
+
+
+    }
+
+
+}
+
+
+@mixin typeface-class($class){
+    $class: unquote('.'+$class);
+    @extend #{$class};
+}
+
+@mixin typeface-color($color,$change-underline: false){
+    $hex: color($color);
+    @if $hex == null{$hex: $color;}
+    color: $hex;
+
+    @if $change-underline{
+        border-bottom-color: $hex;
+    }
+
+}
+
+
+/*------------------------------------------------------------------------------ 
+
+                                CUSTOM FONTS
+
+------------------------------------------------------------------------------*/
+//@include typeface($font-name: Arial, $css-class: arial, $weight: (normal normal,bold 700,bolder bolder));
+//@include font-face("Museo", font-files('Museo/museo-700-regular.woff'));
+@include typeface("Museo-700",normal, normal, 
+$css-class: 'Museo-700', 
+$font-files:font-files('Museo/museo-700-regular.woff','Museo/museo-700-regular.svg'));
+
+

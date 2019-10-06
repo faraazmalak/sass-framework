@@ -1,0 +1,44 @@
+
+/********************************** Gray-Scale Color Codes ****************************/
+$white: #FFFFFF !default;
+$light-gray: #cdcccc !default;
+$medium-gray: #939598 !default;
+$dark-gray: #414142 !default;
+$black: #000000 !default;
+
+/********************************** Theme Color Codes ****************************/
+$trendy-pink: #ff3399 !default;
+$trendy-pink-rose: #f9cdc6 !default;
+$trendy-blue: #0099ff !default;
+$trendy-green: #65ecc4 !default;
+$trendy-peach: #ffe6c7 !default;
+/********************************** Primary & Secondary Color Codes ****************************/
+
+//Used for font color as well as background color
+ $primary-color: $trendy-pink !default;
+ $secondary-color: $trendy-green !default;
+
+/********************************** Alert & Success Color Codes ****************************/
+
+ $warning-color: red !default;
+ $alert-color: #ffe6c7  !default;
+ $success-color: $trendy-green !default;
+
+
+
+/**************************** Shadow Configuration *****************************/
+//Drop Shadows
+$default-box-shadow-color: $white;
+$default-box-shadow-h-offset: 0;
+$default-box-shadow-v-offset: 0;
+$default-box-shadow-blur: 10px;
+$default-box-shadow-spread: false;
+$default-box-shadow-inset: false; //Acceptable values: inset / false
+
+
+// Inset shadow shiny edges and depressions.
+
+ $shiny-edge-size: 0;
+ $shiny-edge-color: $white;
+ $shiny-edge-active-color: $white;
+

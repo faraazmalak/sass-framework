@@ -1,0 +1,94 @@
+@import "compass/typography/lists/bullets";
+
+/*------------------------------------------------------------------------------ 
+
+                             CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+$include-list-classes: true;
+
+
+
+//Regular lists
+$list: null;
+
+$list-item:
+display block,
+margin '5px 0';
+
+//Nested Lists
+$list-nested: null;
+$list-item-nested: null;
+
+
+//Inline Lists
+$inline-list: display block;
+$inline-list-item: display inline-block;
+
+$inline-list-nested: display inline-block;
+$inline-list-item-nested: margin 2px;
+
+/*------------------------------------------------------------------------------ 
+
+                                    CORE
+
+------------------------------------------------------------------------------*/
+
+%list-base{
+    list-style-position: inside;
+    position: relative;
+    & > .list-item{vertical-align: top; position: relative}
+    @include no-bullets();
+
+    &.square,
+    &.circle,
+    &.disc {
+        .list-container { list-style: inherit; }
+    }
+
+    &.square { list-style-type: square; }
+    &.circle { list-style-type: circle; }
+    &.disc { list-style-type: disc; }
+}
+
+@mixin list($list, $li, $list-nested, $li-nested){
+
+    @include style($list);
+
+    & > .list-item{
+
+        @include style($li);
+        .list-container{
+            @include style($list-nested);
+
+            .list-item{
+                @include style($li-nested);
+            }
+
+        }
+    }
+}
+
+
+
+@if $include-list-classes == true{
+
+
+   .stacked-list{
+        @extend %list-base;
+        .list-item{
+            display: block;
+            width: 100%;
+
+        }
+        @include list($list: $list, $li: $list-item, $list-nested: $list-nested, $li-nested: $list-item-nested);
+
+    }
+
+    .inline-list{
+        @extend %list-base;
+        @include list($list: $inline-list, $li: $inline-list-item, $list-nested: $inline-list-nested, $li-nested: $inline-list-item-nested);
+    }
+
+}

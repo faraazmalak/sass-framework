@@ -1,0 +1,136 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+//Blockquote
+$include-block-quote-classes: false;
+/*---------*/
+$block-quote-config: null;
+$block-quote-padding: 0 20px 20px 20px;
+$block-quote-margin: 0 auto;
+$block-quote-width: 300px;
+$block-quote-cite-link-config: null;
+
+$block-quote-start-punctuation: '\201C';
+$block-quote-start-punctuation-offset: (-35px,0);
+$block-quote-start-punctuation-config: font (style italic, size 60px, family $typeface-serif), line-height 1;
+
+$block-quote-end-punctuation: '\201D';
+$block-quote-end-punctuation-offset: (-35px,0);
+$block-quote-end-punctuation-config: $block-quote-start-punctuation-config;
+
+//Inlinequote
+$include-inline-quote-classes: false;
+/*---------*/
+$inline-quote-config: null;
+$inline-quote-cite-link-config: null;
+
+$inline-quote-start-punctuation: '\201C';
+$inline-quote-start-punctuation-config: null;
+
+$inline-quote-end-punctuation: '\201D';
+$inline-quote-end-punctuation-config:null;
+
+//Citation
+$include-citation-classes: false;
+/*---------*/
+$cite-config: null;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                    CORE
+
+------------------------------------------------------------------------------*/
+
+//Use to style quotations
+@mixin quotation($width:$block-quote-width, $padding: $block-quote-padding, $margin: $block-quote-margin, $config: false){
+    margin: $margin;
+    padding: $padding;
+    width: $width;
+    @if $config{
+        @include style($config);
+    }
+}
+
+//Use to position quotation marks
+@mixin punctuation-offset($punctuation,$offset){
+    @if $punctuation == start{
+        &:before{
+            margin-left: nth($offset,1);
+            margin-top: nth($offset,2);
+                
+        }
+    }@else if $punctuation == end{
+        &:after{
+            margin-right: nth($offset,1);;
+            margin-top: nth($offset,2);
+        }
+    }
+}
+@mixin start-punctuation($type, $punctuation:$block-quote-start-punctuation, $offset: $block-quote-start-punctuation-offset, $config: false ){
+    &:before{
+        @if $type == block{
+            display: block;
+            height: 0; 
+            float: left;
+        }
+
+        content:$punctuation; 
+        @if $config {@include style($config);} 
+    }
+    @if $type == block{@include punctuation-offset(start,$offset);}
+}
+
+@mixin end-punctuation($type, $punctuation:$block-quote-end-punctuation,$offset: $block-quote-end-punctuation-offset,$config: false ){
+    &:after{
+        @if $type == block{
+            display: block;
+            height: 0; 
+            float: right; 
+        }
+
+        content:$punctuation;
+        @if $config {@include style($config);} 
+    }
+    @if $type == block{ @include punctuation-offset(end,$offset);}
+}
+
+@if $include-block-quote-classes{
+    .quotation-block{
+        display: block;
+        position: relative;
+
+        @include quotation();
+
+        background: pink;
+
+        @include start-punctuation($config:$block-quote-start-punctuation-config,$type: block);
+        @include end-punctuation($config:$block-quote-end-punctuation-config,$type: block);
+
+        p,.paragraph{display: inline-block; }
+        &, p,.paragraph{@include style($block-quote-config)}
+
+        footer{display: block;}
+        .cite-link{@include style($block-quote-cite-link-config)}
+    }
+}
+
+@if $include-inline-quote-classes{
+
+    .quotation-inline{
+
+        @include style($inline-quote-config);
+
+        @include start-punctuation($config:$inline-quote-start-punctuation-config,$type: inline);
+        @include end-punctuation($config:$inline-quote-end-punctuation-config,$type: inline);
+
+        .cite-link{@include style($inline-quote-cite-link-config)}
+    }
+}
+
+@if $include-citation-classes{
+    cite,.citation{@include style($cite-config);}
+}

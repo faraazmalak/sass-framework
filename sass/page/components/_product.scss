@@ -1,0 +1,133 @@
+
+/*==============================================================================
+
+               GLOBAL STYLES APPLICABLE TO MULTIPLE MODULES
+
+=============================================================================*/
+.category-product-list .product-module .link{
+   
+        font:{weight:normal; size: 11px; family: Arial}
+        color: color(dark-gray);
+        line-height: 11px;
+        
+         @extend %gray-link-with-underline;
+    
+}
+
+.category-product-list.grid-view .product-module{text-align: center}
+
+/*==============================================================================
+
+                        MODULE SPECIFIC STYLES
+
+=============================================================================*/
+
+/*------------------------------------------------------------------------------ 
+
+                       PRODUCT CONTAINER STYLES
+
+------------------------------------------------------------------------------*/
+.category-product-list.grid-view .product{
+    width: 164px;
+    height: 329px;
+    margin: 0 19px 0 0;
+}
+.category-product-list.list-view .product{
+    border-bottom: 1px dotted color(medium-gray);
+    margin-bottom: 20px;
+}
+/*------------------------------------------------------------------------------ 
+
+                              PRODUCT NAME
+
+------------------------------------------------------------------------------*/
+.category-product-list .product-name .link,
+.checkout-cart .product-name .link{
+   
+    font-weight: bold;
+}
+
+.category-product-list .product-name{
+    margin:3px 0 8px;
+}
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                              PRODUCT IMAGE
+
+------------------------------------------------------------------------------*/
+.category-product-list .product .product-image-link{border-bottom: none }
+
+.category-product-list .product-image-container{text-align: center}
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                             PRODUCT PRICE
+
+------------------------------------------------------------------------------*/
+
+.category-product-list{
+    &.grid-view .price-tag{margin: 4px 0 10px 0;}
+    &.list-view .price-tag{margin: 5px 0 10px 0;}
+    
+    .price-label,.price{font-size: 12px; color: color(dark-gray)}
+    .price{font-weight: 700}
+}
+
+
+/*------------------------------------------------------------------------------ 
+
+                             PRODUCT DESCRIPTION
+
+------------------------------------------------------------------------------*/
+.category-product-list .short-description{
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 8px;
+    line-height: 16.2px;
+    padding-right: 20px;
+}
+
+/*------------------------------------------------------------------------------ 
+ 
+                             PRODUCT ACTIONS
+ 
+------------------------------------------------------------------------------*/
+
+//ADD TO CART
+.cart-button{ @include button(cart-button);}
+
+//ADD TO WISHLIST & ADD TO COMPARE LINKS
+.category-product-list .add-to-actions .link{@include typeface-color(#999999,$change-underline: true)}
+/*------------------------------------------------------------------------------ 
+  
+                            RATINGS & REVIEWS
+  
+------------------------------------------------------------------------------*/
+.ratings-reviews{
+    text-align: left;
+    .rating-box{                                
+        line-height:0;
+        width: 65px;
+        background:url("../images/bkg_rating.gif") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
+        .rating{
+            float: left;
+            height: 13px;
+            background: url("../images/bkg_rating.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+
+        }
+    }
+}
+
+.category-product-list .ratings-reviews{
+    margin-bottom: 10px;
+    @include height($line-height: 13px, $height: 13px);
+    .total-ratings-link{font-size: 12px;}
+    .rating-review-links, .rating-box{@include inline-block();}
+}
+
+.category-product-list.list-view .rating-box{margin-right: 15px}

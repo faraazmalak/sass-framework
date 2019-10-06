@@ -1,0 +1,179 @@
+/*------------------------------------------------------------------------------ 
+
+                               CONFIGURATION
+
+------------------------------------------------------------------------------*/
+/* line 51, ../../sass/structure/navigation.scss */
+.navigation > .nav-list:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@-webkit-keyframes bugfix {
+  /* line 59, ../../sass/structure/navigation.scss */
+  from {
+    padding: 0;
+  }
+
+  /* line 60, ../../sass/structure/navigation.scss */
+  to {
+    padding: 0;
+  }
+}
+
+/* line 64, ../../sass/structure/navigation.scss */
+.navigation {
+  font: bold 13px Arial, Helvetica;
+}
+/* line 66, ../../sass/structure/navigation.scss */
+.navigation * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 69, ../../sass/structure/navigation.scss */
+.navigation .list-ordered, .navigation .list-unordered {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 75, ../../sass/structure/navigation.scss */
+.navigation .list-item {
+  position: relative;
+}
+/* line 78, ../../sass/structure/navigation.scss */
+.navigation .list-item:hover > .list-ordered, .navigation .list-item:hover .list-unordered {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+}
+/* line 83, ../../sass/structure/navigation.scss */
+.navigation .list-item:hover > .link {
+  color: white;
+}
+/* line 88, ../../sass/structure/navigation.scss */
+.navigation input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+/* line 93, ../../sass/structure/navigation.scss */
+.navigation .label {
+  display: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* line 104, ../../sass/structure/navigation.scss */
+.navigation > .nav-list {
+  border: 1px solid #040404;
+  background-color: #111111;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+}
+/* line 109, ../../sass/structure/navigation.scss */
+.navigation > .nav-list > li {
+  float: left;
+  border-right: 1px solid #1e1e1e;
+  -webkit-box-shadow: 1px 0 0 #444444;
+  -moz-box-shadow: 1px 0 0 #444444;
+  box-shadow: 1px 0 0 #444444;
+}
+/* line 113, ../../sass/structure/navigation.scss */
+.navigation > .nav-list > li > a {
+  float: left;
+  padding: 1em 3em;
+  text-transform: uppercase;
+}
+/* line 119, ../../sass/structure/navigation.scss */
+.navigation > .nav-list a {
+  color: #999999;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #111111;
+}
+/* line 131, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  margin: 2em 0 0 0;
+  background-color: #373737;
+  background-image: none;
+  -webkit-transition-property: margin, opacity;
+  -moz-transition-property: margin, opacity;
+  -o-transition-property: margin, opacity;
+  transition-property: margin, opacity;
+  -webkit-transition-duration: .15s;
+  -moz-transition-duration: .15s;
+  -o-transition-duration: .15s;
+  transition-duration: .15s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+/* line 142, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul li {
+  display: block;
+  -webkit-box-shadow: 0 1px 0 #1e1e1e, 0 2px 0 #515151;
+  -moz-box-shadow: 0 1px 0 #1e1e1e, 0 2px 0 #515151;
+  box-shadow: 0 1px 0 #1e1e1e, 0 2px 0 #515151;
+}
+/* line 146, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul li:first-child > a {
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+/* line 39, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul li:first-child > a:after {
+  content: '';
+  position: absolute;
+  left: 4em;
+  top: -12px;
+  border: 6px solid transparent;
+  border-bottom-color: inherit;
+}
+/* line 150, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul li:last-child {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+/* line 152, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul li:last-child > a {
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -o-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+}
+/* line 157, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul a {
+  padding: 1em;
+  width: 175px;
+  display: block;
+  border-color: #373737;
+}
+/* line 162, ../../sass/structure/navigation.scss */
+.navigation > .nav-list ul a:hover {
+  background-color: #0186ba;
+  border-color: #0186ba;
+}

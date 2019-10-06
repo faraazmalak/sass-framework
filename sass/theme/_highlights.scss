@@ -1,0 +1,32 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+$include-highlight-classes: false;
+
+$highlight-bg-color: color(yellow);
+$highlight-font-color: color(black) ;
+
+//Miscellaneous Config
+$highlight-config: null;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                    CORE
+
+------------------------------------------------------------------------------*/
+@mixin highlight($bg-color: $highlight-bg-color, $font-color: $highlight-font-color, $config: $highlight-config){
+
+    background-color: $bg-color;
+    color: $font-color;
+    @include style($config);
+
+}
+@if $include-highlight-classes{
+    .highlight{@include highlight();}
+}
+
+

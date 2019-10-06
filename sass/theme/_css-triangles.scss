@@ -1,0 +1,117 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-css-arrow-classes:true;
+$default-arrow-color: color(dark-gray);
+$default-arrow-style: solid;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                    CORE
+
+------------------------------------------------------------------------------*/
+
+
+
+%arrow{
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+@mixin arrow-up($size, $style: $default-arrow-style, $color: $arrow-color){
+
+
+    %arrow-css{
+        @extend %arrow;
+        border-left: $size $style transparent;
+        border-right: $size $style transparent;
+
+        border-bottom: $size $style $color;
+    }
+
+    @if $include-css-arrow-classes{
+        .arrow-up{
+            @extend %arrow-css;
+        }
+    }@else{
+        @extend %arrow-css;
+    }
+
+}
+
+@mixin arrow-down($size, $style: $default-arrow-style, $color: $arrow-color){
+
+
+    %arrow-css{
+        @extend %arrow;
+        border-left: $size $style transparent;
+        border-right: $size $style transparent;
+
+        border-top: $size $style $color;
+
+    }
+
+
+
+
+    @if $include-css-arrow-classes{
+        .arrow-down{
+            @extend %arrow-css;
+        }
+    }@else{
+        @extend %arrow-css;
+    }
+}
+
+@mixin arrow-right($size, $style: $default-arrow-style, $color: $arrow-color){
+
+
+    %arrow-css{
+        border-top: $size $style transparent;
+        border-bottom: $size $style transparent;
+
+        border-left: $size $style $color;
+    }
+
+
+
+    @if $include-css-arrow-classes{
+        .arrow-right{
+            @extend %arrow;
+            @extend %arrow-css;
+        }
+    }@else{
+        @extend %arrow-css;
+    }
+}
+
+@mixin arrow-left($size, $style: $default-arrow-style, $color: $arrow-color){
+
+
+    %arrow-css{
+        @extend %arrow;
+        border-top: $size $style transparent;
+        border-bottom: $size $style transparent; 
+
+        border-right: $size $style $color; 
+    }
+
+
+
+    @if $include-css-arrow-classes{
+        .arrow-left{
+            @extend %arrow-css;
+        }
+    }@else{
+        @extend %arrow-css;
+    }
+}
+
+
+
+

@@ -1,0 +1,37 @@
+/********************************** Padding, Border & Margin ****************************/
+
+//Border
+$txt-box--border-color: $medium-gray;
+$txt-box--border-width: 2px;
+$txt-box--border-style: solid;
+$txt-box--border-radius: 0;
+
+$txt-box-border-focus:             $blue;
+
+//Padding
+$txt-box-padding: 0;
+
+//Margin
+$txt-box-margin: 0;
+
+/********************************** Font Styling ****************************/
+
+$input-bg:                       #fff !default;
+$input-bg-disabled:              $light-gray !default;
+
+$input-color:                    $dark-gray !default;
+
+
+
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+$input-height-large:             20px !default;
+$input-height-small:             10px !default;
+
+$legend-color:                   $dark-gray !default;
+$legend-border-color:            #e5e5e5 !default;
+
+$input-group-addon-bg:           $light-gray !default;
+$input-group-addon-border-color: $input-border !default;
+
+$input-font-family:              $font-family-base;
+$input-font-size:                12px;

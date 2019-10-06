@@ -1,0 +1,14 @@
+@import "sprite/*.png";
+@include all-sprite-sprites;
+
+.sprite{
+
+    @import "compass/typography/text/replacement";
+    @include hide-text();
+   
+    &.icon{@include inline-block(); padding: 0!important;}
+}
+
+
+
+

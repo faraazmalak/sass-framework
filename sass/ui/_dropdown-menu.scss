@@ -1,0 +1,44 @@
+/*------------------------------------------------------------------------------ 
+
+                               CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$default-dropdown-config: width  100%, background-color color(white);
+$default-dropdown-button-config: 
+border (width 1px, style solid, color color(medium-gray)),
+hover (
+    background color(orange),
+    color color(white)
+);
+/*------------------------------------------------------------------------------ 
+
+                                   CORE
+
+------------------------------------------------------------------------------*/
+
+.contains-dropdown{
+    overflow: visible;
+    &:hover {
+        .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin: 0;				
+        }
+      
+    }
+
+    .dropdown-menu{
+        position: absolute;
+        top: 100%; left: 0;
+        z-index: 1;		
+        opacity: 0;
+        visibility: hidden;
+        
+        @include style($default-dropdown-config);
+        
+        .dropdown-menu-item{display: block; }
+        .button{@include style($default-dropdown-button-config);}
+        
+    }
+}
+

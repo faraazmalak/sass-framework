@@ -1,0 +1,22 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-copyright-classes: true;
+
+$copyright-config:
+text-align center,
+font (size 11px, style normal),
+margin-top 22px,
+color color(medium-gray);
+
+
+/*------------------------------------------------------------------------------ 
+
+                                   CORE
+
+------------------------------------------------------------------------------*/
+@if $include-copyright-classes{
+    .copyright{@include style($copyright-config)}
+}

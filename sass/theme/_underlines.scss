@@ -1,0 +1,51 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+/*********************************
+ Default Underline Configuration
+*********************************/
+$include-underline-classes: true;
+
+$underline-padding: 0 ;
+$underline-color: color(black) ;
+$underline-width: 1px ;
+$underline-style: solid ;
+
+//Miscellaneous Config
+$underline-config: null;
+
+/*------------------------------------------------------------------------------ 
+
+                                  CORE
+
+------------------------------------------------------------------------------*/
+
+/*********************************
+ BASE
+*********************************/
+%underline{
+    text-decoration: none;
+    //line-height: 1;
+}
+
+/*********************************
+ MIXINS
+*********************************/
+@mixin underline($color: $underline-color, $width: $underline-width, $style: $underline-style, $padding: $underline-padding, $config: $underline-config){
+    @extend %underline;
+    border-bottom: $width $style $color;
+    padding-bottom: $padding;
+
+    @include style($config);
+}
+
+/*******************************
+DEFAULT CLASSES
+******************************/
+@if $include-underline-classes{
+    %no-underline{border-bottom-color: transparent !important}
+}
+
+

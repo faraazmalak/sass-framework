@@ -1,0 +1,9 @@
+  .language-switcher{ 
+    
+      color: color(dark-gray);
+      .current-language{font-size: 11px;} 
+      .language-switch, .language-switch .link{font-size: 11px; color: color(dark-gray)}
+      .dropdown-menu {padding: 10px; left: -11px;}
+      .dropdown-menu-item{text-align: center}
+      @include arrow-down($size: 4px, $color: color(dark-gray));
+  }

@@ -1,0 +1,60 @@
+/*------------------------------------------------------------------------------ 
+
+                                UTILITY CLASSES
+
+------------------------------------------------------------------------------*/
+//Float
+.float-left{float: left !important}
+.float-right{float: right !important}
+.no-float{float: none !important}
+
+//Text Alignment
+.text-left{text-align: left !important}
+.text-right{text-align: right !important}
+.text-center{text-align: center !important}
+.text-justify{text-align: justify !important}
+
+
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+//Content Toggling
+.hidden{
+    display: none !important;
+    visibility: hidden !important;
+}
+
+//Table
+.table {
+    display: table;
+  
+}
+.tr { 
+    display: table-row; 
+}
+.td { 
+    display: table-cell;
+}
+
+/*------------------------------------------------------------------------------ 
+
+                                MIXINS
+
+------------------------------------------------------------------------------*/
+@mixin use-style($class-name){
+    $class-name: unquote('%'+$class-name);
+    @extend #{$class-name};
+}

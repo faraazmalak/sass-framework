@@ -1,0 +1,31 @@
+//
+// Label Variables
+//
+/********************************** Padding, Border & Margin ****************************/
+// We use these to style the labels
+
+   $control-label-padding: 0;
+   $control-label-margin: 0;
+
+   $control-label-border-radius: 0;
+   $control-label-border-width: 0;
+   $control-label-border-color: 0;
+
+/********************************** Font Styling ****************************/
+// We use these to style the label text
+   $control-label-font-family: $font-family-sans-serif; 
+   $control-label-font-weight: normal;
+   $control-label-font-size: 12px;
+   $control-label-font-color: $orange;
+
+   $control-label-text-case: none;
+   $control-label-text-align: left;
+
+
+   
+
+/********************************** Background Styling ****************************/
+
+  $control-label-bg-color: $transparent;
+
+/********************************** Miscellaneous ****************************/

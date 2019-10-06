@@ -1,0 +1,106 @@
+.valign-wrapper
+{
+    display: table;
+    .valigned-element{
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+.borderless{border: none!important; }
+
+.fluid-image{
+
+
+}
+
+.no-icon:before{content:""!important;}
+
+.liquify{
+
+    display: table;
+    #{elements-of-type(block)}, #{elements-of-type(inline)}, #{elements-of-type(list-item)}{
+    
+         display: table-cell !important;
+        vertical-align: middle !important;
+
+    }
+
+}
+
+/****************************************************************************
+                            Utility Mixins 
+/****************************************************************************/
+
+// We use this to create equilateral triangles
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+    border-top-style: solid;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+    border-bottom-style: solid;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+    border-left-style: solid;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+    border-right-style: solid;
+  }
+}
+
+/************Tab Focus******************/
+// Webkit-style focus
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+/***************User Select *************/
+// For selecting text on the page
+@mixin user-select($select) {
+  -webkit-user-select: $select;
+     -moz-user-select: $select;
+      -ms-user-select: $select; // IE10+
+       -o-user-select: $select;
+          user-select: $select;
+}
+
+/************** Opacity ******************/
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  //$opacity-ie: ($opacity * 100);
+  //filter: ~"alpha(opacity=${opacity-ie})";
+}
+/*******Content Underline Mixin********/
+
+//Content Underline Configuration
+ $underline-color: $black !default;
+ $underline-width: 1px !default;
+ $underline-style: solid !default; 
+ $underline-padding: 5px !default; 
+
+// Content Underline Mixin
+ @mixin underline($underline-color: $underline-color, $underline-style: $underline-style, $underline-width: $underline-width, $underline-padding: $underline-top-padding){
+        
+        border-bottom-color: $underline-color !important;
+        border-bottom-width: $underline-width !important;
+        border-bottom-style: $underline-style !important;
+        padding-bottom: $underline-padding !important;
+    
+  }
+
+  .underline{ @include underline($underline-color: $underline-color, $underline-style: $underline-style, $underline-width: $underline-width, $underline-padding: $underline-padding); }

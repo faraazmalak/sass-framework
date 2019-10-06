@@ -1,0 +1,13 @@
+.catalog-category-view{
+
+    .main-content{max-width: 599px}
+    .content-wrapper{border: 1px solid color(medium-gray)}
+
+    .category-product-list{padding-left: 20px;}
+    .category-view{
+
+        @include border(left right,1px solid color(medium-gray));
+
+    }
+    .sidebar-right{min-width: 182px;}
+}

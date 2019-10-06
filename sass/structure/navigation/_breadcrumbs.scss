@@ -1,0 +1,44 @@
+// Breadcrumb Variables
+//
+/**********************************General Settings****************************/
+// We use this to set the background color for the breadcrumb container.
+
+ $crumb-bg: (light-gray);
+
+// We use these to control the slash between breadcrumbs
+
+ $crumb-slash-color: color(medium-gray);
+ $crumb-slash: "/";
+
+/**********************************Padding & Border****************************/
+// We use these to set the padding around the breadcrumbs.
+
+ $crumb-padding: 5px 0 5px 10px;
+ $crumb-side-padding: 12px;
+
+// We use these to control border styles.
+
+
+ $crumb-function-factor: 10%;
+ $crumb-border-size: 1px;
+ $crumb-border-style: solid;
+ $crumb-border-color: color(medium-gray);
+ $crumb-radius: 3px 3px 0 0 ;
+
+/**********************************Font****************************/
+// We use these to set various text styles for breadcrumbs.
+ 
+ $crumb-font-family: Arial;
+ $crumb-font-size: 11px;
+ $crumb-font-color: color(medium-gray);
+ $crumb-font-weight: 400;
+ $crumb-font-color-current: color(dark-gray);
+ $crumb-font-weight-current: 700;
+ $crumb-font-color-unavailable: color(dark-gray);
+ $crumb-font-transform: normal;
+ $crumb-link-decor: none;
+
+ $crumb-link-border-top: 0;
+ $crumb-link-border-bottom: 0;
+ $crumb-link-border-top-current: 0;
+ $crumb-link-border-bottom-current: 0;

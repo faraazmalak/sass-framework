@@ -1,0 +1,23 @@
+/*@mixin height( $height, $line-height: $height, $v-align:middle, $child-height: 100%, $child-content-v-align: middle){
+
+    height: $height;
+    line-height: $line-height;
+    vertical-align: $v-align;
+
+    //& > * { height: $child-height; vertical-align: $child-content-v-align}
+    //& > * > *{vertical-align: $child-content-v-align }
+    
+
+}*/
+
+@mixin height( $height, $line-height: unquote((strip-unit($height) - 1 ) + 'px'), $v-align:middle){
+    height: $height;
+    line-height: $line-height;
+    vertical-align: $v-align;
+}
+
+
+
+
+
+

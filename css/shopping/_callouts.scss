@@ -1,0 +1,33 @@
+.callout
+{
+    .callout-title {
+        font-size: emCalc(16);
+        padding: 7px 0 0;
+    }
+    .callout-subheader{
+        font-size: emCalc(15);
+        font-weight: bold;
+        margin: 12px 0 0;
+    }
+    .link{font-size: inherit;}
+    .label{padding-left: 0}
+    
+
+}
+
+.cart-callout
+{
+    .cart-callout-content
+    {
+        .total-cart-items {
+            font-size: emCalc(12);
+        }
+
+    }
+
+    .subtotal {
+        font-size: emCalc(13);
+        .label.cart-subtotal {font-size: emCalc(16);}
+    }
+
+}

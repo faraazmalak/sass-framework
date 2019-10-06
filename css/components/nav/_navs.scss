@@ -1,0 +1,28 @@
+// Navs
+// -------------------------
+
+$nav-link-padding:                          10px 15px !default;
+$nav-link-hover-bg:                         transparent !default;
+
+$nav-disabled-link-color:                   $light-gray !default;
+$nav-disabled-link-hover-color:             $light-gray !default;
+
+$nav-open-link-hover-color:                 #fff !default;
+$nav-open-caret-border-color:               #fff !default;
+
+// Tabs
+$nav-tabs-border-color:                     #ddd !default;
+
+$nav-tabs-link-hover-border-color:          $light-gray !default;
+
+$nav-tabs-active-link-hover-bg:             $white;
+$nav-tabs-active-link-hover-color:          $dark-gray !default;
+$nav-tabs-active-link-hover-border-color:   #ddd !default;
+
+$nav-tabs-justified-link-border-color:            #ddd !default;
+$nav-tabs-justified-active-link-border-color:     $white;
+
+// Pills
+$nav-pills-active-link-hover-bg:            transparent !default;
+$nav-pills-active-link-hover-color:         transparent !default;
+$nav-pills-spacing:                         0 !default;

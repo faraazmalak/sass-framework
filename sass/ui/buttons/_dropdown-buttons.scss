@@ -1,0 +1,87 @@
+/*------------------------------------------------------------------------------ 
+
+                               CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-dropdown-button-classes: true;
+
+$dropdown-button-config: null;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                   CORE
+
+------------------------------------------------------------------------------*/
+
+
+%dropdown-button-wrapper-base {
+    //float: left;
+    //padding: $gutter 3 * $gutter;
+    //text-transform: uppercase;	
+    //@include style($nav-button);
+    &:hover {
+        .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin: 0;				
+        }
+    }
+    /*> .nav-button:hover{
+        @include style($nav-button-hover);
+    }*/
+}
+
+
+
+@if $include-dropdown-button-classes{
+    .dropdown-button{
+        @include style($dropdown-button-config);
+      //  @extend %dropdown-button-base;
+        & + .dropdown-menu{
+          //  @extend %dropdown-menu-base;
+        }
+    }
+}
+
+@mixin dropdown-button-size($size){
+    $size: unquote('%'+ $size +'-dropdown-button');
+    @extend #{$size};
+}
+@mixin dropdown-button-style($style){
+    @include use-style($style);
+}
+
+/*------------------------------------------------------------------------------ 
+
+                            CUSTOM DROPDOWN BUTTON STYLES
+
+------------------------------------------------------------------------------*/
+
+//Button Sizes
+%tiny-dropdown-button{
+    //NO Styles
+}
+
+%small-dropdown-button{
+    padding: 0 14px;
+    font-size: 12px;
+    @include height(21px);
+}
+
+%medium-dropdown-button{
+    padding: 0 32px;
+    font-size: 15px;
+    @include height(27px);
+}
+
+%large-dropdown-button{
+    //No Styles
+}
+
+%jumbo-dropdown-button{
+    //No Styles
+}
+
+
+//Button Styles

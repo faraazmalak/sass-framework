@@ -1,0 +1,131 @@
+//
+// Form Variables
+//
+
+/********************************<form>******************************/
+// Use this to set the base for lots of form spacing and positioning styles
+$form-spacing: emCalc(16);
+
+// We use these to control the basic form styles input styles
+
+ $custom-form-border-color: $dark-gray;
+ $custom-form-border-size: emCalc(0);
+ $custom-form-bg: $white;
+ $custom-form-bg-disabled: $white;
+
+
+
+/********************************<label>******************************/
+ $form-label-pointer: pointer;
+ $form-label-font-size: emCalc(14);
+ $form-label-font-weight: 500;
+ $form-label-font-color: lighten(#000, 30%);
+ $form-label-bottom-margin: emCalc(3);
+
+/*Prefix Label - Labels that appear before form elements*/
+ $input-prefix-bg: darken(#fff, 5%);
+ $input-prefix-border-color: darken(#fff, 20%);
+ $input-prefix-border-size: 1px;
+ $input-prefix-border-type: solid;
+ $input-prefix-overflow: hidden;
+ $input-prefix-font-color: #333;
+ $input-prefix-font-color-alt: #fff;
+
+
+/********************************<input>******************************/
+
+ $input-font-family: inherit;
+ $input-font-color: rgba(0,0,0,0.75);
+ $input-font-size: emCalc(14);
+ $input-bg-color: #fff;
+ $input-focus-bg-color: darken(#fff, 2%);
+ $input-border-color: darken(#fff, 20%);
+ $input-focus-border-color: darken(#fff, 40%);
+ $input-border-style: solid;
+ $input-border-width: 1px;
+ $input-disabled-bg: #ddd;
+ $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+ $input-include-glowing-effect: true;
+
+// We use these to control the basic form styles input styles
+
+ $custom-form-input-size: 16px;
+
+// Use this to style the glowing effect of inputs when focused
+
+ $glowing-effect-fade-time: 0.45s;
+ $glowing-effect-color: $input-focus-border-color;
+
+/********************************CheckBox******************************/
+ $custom-form-checkbox-radius: 0px;
+
+// Check Mark Styling 
+
+ $custom-form-check-color: #222;
+ $custom-form-check-size: 16px;
+
+/********************************Radio******************************/
+ $custom-form-radio-size: 8px;
+
+/********************************<select>******************************/
+
+// We use these to style the custom select form element.
+
+ $custom-select-bg: $white;
+ $custom-select-fade-to-color: $white;
+ $custom-select-border-color: $medium-gray;
+ $custom-select-border-size: 1px;
+ $custom-select-triangle-color: #aaa;
+ $custom-select-triangle-color-open: #222;
+ $custom-select-height: emCalc(13) + ($form-spacing * 1.2);
+ $custom-select-margin-bottom: 0;
+ $custom-select-font-color-selected: #141414;
+ $custom-select-disabled-color: #888;
+
+// We use these to control the style of the custom select dropdown element.
+
+ $custom-dropdown-height: 200px;
+ $custom-dropdown-bg: #fff;
+ $custom-dropdown-border-color: darken(#fff, 20%);
+ $custom-dropdown-border-width: 1px;
+ $custom-dropdown-border-style: solid;
+ $custom-dropdown-font-color: #555;
+ $custom-dropdown-font-size: emCalc(14);
+ $custom-dropdown-color-selected: #eeeeee;
+ $custom-dropdown-font-color-selected: #000;
+ $custom-dropdown-shadow: 0 2px 2px 0px rgba(0,0,0,0.1);
+ $custom-dropdown-offset-top: auto;
+ $custom-dropdown-list-padding: emCalc(4);
+ $custom-dropdown-default-float-padding: emCalc(6);
+ $custom-dropdown-opposite-padding: emCalc(38);
+ $custom-dropdown-list-item-min-height: emCalc(24);
+ $custom-dropdown-width-small: 134px;
+ $custom-dropdown-width-medium: 155px;
+ $custom-dropdown-width-large: 434px;
+
+/********************************<select>******************************/
+
+/********************************<fieldset>, <legend>**************************/
+// <fieldset>
+
+ $fieldset-border-style: solid;
+ $fieldset-border-width: 0;
+ $fieldset-border-color: #ddd;
+ $fieldset-padding: 0;
+ $fieldset-margin: emCalc(18, 0 , 0 , 0);
+
+// <legend>
+
+ $legend-bg: #fff;
+ $legend-font-weight: bold;
+ $legend-padding: emCalc(0, 3);
+
+/********************************Error Messages******************************/
+// Use these to style the error states for inputs and labels
+
+ $input-error-message-padding: emCalc(6, 4);
+ $input-error-message-top: 0;
+ $input-error-message-font-size: emCalc(12);
+ $input-error-message-font-weight: bold;
+ $input-error-message-font-color: #fff;
+ $input-error-message-font-color-alt: #333;

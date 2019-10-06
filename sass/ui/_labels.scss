@@ -1,0 +1,23 @@
+/*------------------------------------------------------------------------------ 
+
+                                 CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-label-classes: true;
+
+$label-config: 
+font (family $typeface-sans-serif, size 12px),
+color color(dark-gray),
+background-color color(transparent);
+
+   
+/*------------------------------------------------------------------------------ 
+
+                                   CORE
+
+------------------------------------------------------------------------------*/
+@if $include-label-classes{
+    .label{
+        @include style($label-config);
+    }
+}

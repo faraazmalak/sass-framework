@@ -1,0 +1,45 @@
+//
+// Side Nav Variables
+//
+
+/*********************************** Padding & Margin Configuration ********************/ 
+// We use this to control <ul>   <ol> padding.
+ $side-nav-padding: 0 0 0 0;
+
+
+
+/*********************************** List Style Configuration ********************/
+// We use these to control list styles.
+
+ $side-nav-list-type: none;
+ $side-nav-list-position: inside;
+ 
+/*********************************** Link Style Configuration ********************/
+
+// We use these to control link styles.
+
+ $side-nav-link-color: $medium-gray;
+ $side-nav-link-color-active: $primary-color;
+ $side-nav-font-size: 11px;;
+ $side-nav-font-weight: normal;
+ $side-nav-link-text-case: uppercase;
+
+
+/*********************************** Divider Style Configuration ********************/
+// We use these to control border styles
+
+ $side-nav-divider-size: 1px;
+ $side-nav-divider-style: solid;
+ $side-nav-divider-color: darken(#fff, 10%);
+
+
+/*********************************** Side Nav Header Configuration ********************/
+$side-nav-heading-font-family: "p22-underground";
+$side-nav-heading-font-size: 12px;;
+$side-nav-heading-font-weight: 500;
+$side-nav-heading-color: $black;
+$side-nav-heading-case: uppercase;
+$side-nav-heading-margin: 0 ;
+
+/*********************************** Side Nav Item ********************/
+$side-nav-item-margin: 0;

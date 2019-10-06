@@ -1,0 +1,44 @@
+//
+// Orbit Variables
+//
+
+/**********************************General Settings****************************/
+
+// Graceful Loading Wrapper and preloader
+
+ $wrapper-class: "slideshow-wrapper";
+ $preloader-class: "preloader";
+
+
+/********************************** Caption Config ****************************/
+// We use these to control the caption styles
+
+ $orbit-container-bg: #f5f5f5;
+ $orbit-caption-bg-old: rgb(0,0,0);
+ $orbit-caption-bg: rgba(0,0,0,0.6);
+ $orbit-caption-font-color: $black;
+
+/********************************** Left/Right Nav Config ****************************/
+// We use these to control the left/right nav styles
+
+ $orbit-nav-bg-old: rgb(0,0,0);
+ $orbit-nav-bg: rgba(0,0,0,0.6);
+
+/********************************** Timer Config ****************************/
+// We use these to control the timer styles
+
+ $orbit-timer-bg-old: rgb(0,0,0);
+ $orbit-timer-bg: rgba(0,0,0,0.6);
+
+/********************************** Bullet Nav  Config ****************************/
+// We use these to control the bullet nav styles
+
+ $orbit-bullet-nav-color: #999;
+ $orbit-bullet-nav-color-active: #555;
+
+/********************************** Slide Number Config ****************************/
+// We use thes to controls the style of slide numbers
+
+ $orbit-slide-number-bg: rgba(0,0,0,0);
+ $orbit-slide-number-font-color: #fff;
+ $orbit-slide-number-padding: emCalc(5px);

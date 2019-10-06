@@ -1,0 +1,70 @@
+// Forms
+// -------------------------
+
+/********************** Input Form Control Styling ***********************/
+$input-bg:                       #fff !default;
+$input-bg-disabled:              $light-gray !default;
+
+$input-color:                    $dark-gray !default;
+$input-border:                   #ccc !default;
+$input-border-radius:            0 !default;
+$input-border-focus:             #66afe9 !default;
+
+
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+$input-height-large:             20px !default;
+$input-height-small:             10px !default;
+
+$legend-color:                   $dark-gray !default;
+$legend-border-color:            #e5e5e5 !default;
+
+$input-group-addon-bg:           $light-gray !default;
+$input-group-addon-border-color: $input-border !default;
+
+$input-font-family:              $font-family-base;
+$input-font-size:                12px;
+
+/********************** Label Styling ***********************/
+$form-label-font-family: $font-family-sans-serif;
+$form-label-color: $orange;
+$form-label-font-weight: normal;
+$form-label-font-size: 12px;
+
+$form-label-text-case: uppercase;
+
+$form-label-bg-color: transparent;
+
+$form-label-margin: 0;
+$form-label-padding: 0;
+
+$form-label-display: inline-block;
+
+
+
+/********************** Placeholder Text Styling ***********************/
+$placeholder-font-weight: normal;
+$placeholder-font-color: $black;
+$placeholder-font-style: normal;
+$placeholder-font-family: $font-family-sans-serif;
+$placeholder-font-size: 13px;
+$placeholder-padding: 3px 7px;
+
+
+// Form states and alerts
+// -------------------------
+
+$state-warning-text:             #c09853 !default;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 3%) !default;
+
+$state-danger-text:              #b94a48 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 3%) !default;
+
+$state-success-text:             #468847 !default;
+$state-success-bg:               #dff0d8 !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text:                #3a87ad !default;
+$state-info-bg:                  #d9edf7 !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;

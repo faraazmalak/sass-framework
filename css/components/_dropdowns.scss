@@ -1,0 +1,20 @@
+// Dropdowns
+// -------------------------
+
+$dropdown-bg:                    #fff !default;
+$dropdown-border:                rgba(0,0,0,.15) !default;
+$dropdown-fallback-border:       #ccc !default;
+$dropdown-divider-bg:            #e5e5e5 !default;
+
+$dropdown-link-active-color:     #fff !default;
+$dropdown-link-active-bg:        $component-active-bg !default;
+
+$dropdown-link-color:            $dark-gray !default;
+$dropdown-link-hover-color:      #fff !default;
+$dropdown-link-hover-bg:         $dropdown-link-active-bg !default;
+
+$dropdown-link-disabled-color:   $light-gray !default;
+
+$dropdown-header-color:          $light-gray !default;
+
+$dropdown-caret-color:           #000 !default;

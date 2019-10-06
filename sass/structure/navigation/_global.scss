@@ -1,0 +1,170 @@
+@import "compass/css3";
+//@import '../../ui/buttons/core';
+/*============================================================================== 
+
+                               CONFIGURATION
+
+===============================================================================*/
+$include-navigation-classes: true !default;
+
+/*------------------------------------------------------------------------------
+
+                             NAVIGATION WRAPPER
+
+------------------------------------------------------------------------------*/
+//Navigation Wrapper
+$nav-wrapper: 
+height 28px, 
+line-height 27px, 
+margin-top 9px,
+class 'global-nav-gradient',
+class 'round-4px',
+border (width 1px, style solid, color color(medium-gray))
+;
+
+
+/*------------------------------------------------------------------------------
+
+                             NAVIGATION BUTTONS
+
+------------------------------------------------------------------------------*/
+//Main Nav
+$nav-button:  
+padding '0 9px 0 12px', 
+font (size 13px, weight 700), 
+color color(black),
+height 100%,
+vertical-align top,
+line-height 28px,
+hover (
+background linear-gradient(#797979,#FFFFFF), 
+color color(orange)
+);
+
+/*------------------------------------------------------------------------------
+
+                             DROPDOWN MENU
+
+------------------------------------------------------------------------------*/
+
+//Dropdown Menu
+$nav-dropdown-menu: background-color color(light-gray), width 160px;
+
+$include-dropdown-menu-triangle: false;
+
+//Dropdown Menu Button
+$nav-dropdown-menu-button: 
+width 100%, 
+height 30px, 
+padding-left 10px, 
+font (size 12px, weight 700),
+color color(black),
+hover (color color(white));
+
+
+// Variables
+$gutter: 1em;						// Base gutter
+$input: "input[type=checkbox]";  	// Checkbox hack selector
+
+
+
+
+
+/*============================================================================== 
+
+                                     CORE
+
+===============================================================================*/
+
+// Shortest clearfix. Ever. IE8+. 
+// http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+%cf:after {
+    content:"";
+    display:table;
+    clear:both;		
+}
+
+
+@-webkit-keyframes bugfix { 
+    from { padding: 0; } 
+    to { padding: 0; } 
+}
+
+@if $include-navigation-classes{
+
+    // New box model, small reset, global stuff
+    .navigation {
+        @include style($nav-wrapper);
+      
+
+        * {
+            @include box-sizing(border-box);
+        }
+        .nav-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            @extend %cf;
+
+            .dropdown-menu {
+
+                //@extend %dropdown-menu-base;
+                //margin: 2 * $gutter 0 0 0;
+                @include style($nav-dropdown-menu);
+                //@include menu-background(lighten($baseMenuBackground, 15%), false);    
+                @include transition-property("margin, opacity");
+                @include transition-duration(".15s");
+                @include transition-timing-function(ease-in-out);
+                .dropdown-menu-item {
+
+                    //@include box-shadow(0 1px 0 lighten($baseMenuBackground, 5%), 
+                    //0 2px 0 lighten($baseMenuBackground, 25%));
+                    &:first-child > a {
+                        @include border-radius(3px 3px 0 0);
+                        @if $include-dropdown-menu-triangle {@include pseudo-triangle(6px, 4);}
+                    }
+                    &:last-child {
+                        @include box-shadow(none);
+                        > a {
+                            @include border-radius(0 0 3px 3px);
+                        }
+                    }
+                }
+                .button {
+                    //padding: $gutter;
+
+                    display: block;
+                    @include style($nav-dropdown-menu-button);
+                    //border-color: lighten($baseMenuBackground, 15%);
+
+                }
+            }
+
+
+        }
+        .nav-item{
+            position: relative;
+            float: left;
+
+        }
+
+        .nav-button{
+            @include style($nav-button);
+        }
+
+
+    }
+
+    #{$input} {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    .label {
+        //display:none;
+        cursor: pointer;
+        user-select:none;
+    }							
+}
+

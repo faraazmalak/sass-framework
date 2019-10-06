@@ -1,0 +1,50 @@
+.sidebar-block{
+
+  /*------------------------------------------------------------------------------ 
+        
+                        GENERAL SIDEBAR BLOCK STYLING
+        
+  ------------------------------------------------------------------------------*/
+    @include use-style(widget-gradient);;
+    border-bottom: 1px solid color(medium-gray);
+    padding: 17px;
+    
+    
+    .block-title{
+        font-size: 14px;
+        font-weight: 400;
+        color: color(dark-gray);
+        margin: 2.8px 0 7px 0;
+    }
+
+    .block-content{
+        margin-top: 5px;
+         p{font-size: 11px; color: color(dark-gray); margin: 5px 0}
+    }
+   
+
+    .block-actions{text-align: right;}
+    
+    .button{
+       
+        @include button(cart-button)
+    }
+
+    
+   /*------------------------------------------------------------------------------ 
+        
+                        COMMUNITY POLL BLOCK STYLING
+        
+  ------------------------------------------------------------------------------*/
+    &.block-poll{
+
+        padding-left: 13px;
+        .radio, .poll-label{@include inline-block;}
+        .label{color: color(dark-gray); text-transform: none; font-size: 11px;}
+        .radio{margin-top: 0;}
+        .button{width: 59px; height: 21px}
+
+    }
+
+
+}

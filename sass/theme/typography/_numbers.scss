@@ -1,0 +1,86 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+
+
+//Phone Numbers
+$include-phone-classes: false;
+
+$phone-number-separator: ' - ';
+$phone-number-separator-config: null;
+
+$phone-mobile: null;
+$phone-home: null;
+$phone-work: null;
+
+
+
+//Credit Card Numbers
+$include-credit-card-classes: false;
+
+$cc-number-separator: ' - ';
+$cc-number-separator-config: null;
+
+$cc-type: null;
+$cc-last-5-digits:null;
+$cc-number-config: null;
+$cc-cvv-config: null;
+$cc-holder-name-config: null;
+$cc-expiry-config: null;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                  CORE
+
+------------------------------------------------------------------------------*/
+
+@mixin numeric-separator($separator,$config: null){
+    .digit-group:not(:last-child):after{
+        content: $separator;
+        @include style($config);
+    }
+}
+
+@if $include-phone-classes{
+    .phone-mobile{
+        @include numeric-separator($phone-number-separator,$phone-number-separator-config);
+        @include style($phone-mobile);
+    }
+    .phone-work{
+        @include numeric-separator($phone-number-separator,$phone-number-separator-config);
+        @include style($phone-work);
+    }
+    .phone-home{
+        @include numeric-separator($phone-number-separator,$phone-number-separator-config);
+        @include style($phone-home);
+    }
+}
+
+@if $include-credit-card-classes{
+    .credit-card{
+        .cc-type{
+            @include style($cc-type-config);
+        }
+        .cc-number{
+            @include numeric-separator($cc-number-separator,$cc-number-separator-config);
+            @include style($cc-number-config);
+        }
+        .cc-cvv{
+            @include style($cc-cvv-config);
+        }
+        .cc-holder-name{
+            @include style($cc-holder-name-config);
+        }
+        .cc-expiry{
+            @include style($cc-expiry-config);
+        }
+        .cc-last-5-digits{
+            @include style($cc-last-5-digits);
+        }
+    }
+}
+

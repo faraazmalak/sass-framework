@@ -1,0 +1,62 @@
+
+.global-header{
+
+    /*------------------------------------------------------------------------------ 
+    
+                                  HEADER MODULES
+    
+    ------------------------------------------------------------------------------*/
+    @import '../modules/search';
+    @import '../modules/welcome-msg';
+    @import '../modules/language-switcher';
+    /*------------------------------------------------------------------------------ 
+    
+                                    HEADER STRUCTURE
+    
+    ------------------------------------------------------------------------------*/
+    margin-bottom: 24px;
+
+    .quick-access-bar{
+        padding: 0 11px;
+        margin-bottom: 8px;
+        overflow: visible;
+
+        @include height(28px);
+        @include use-style(white-gray-gradient);
+
+    }
+
+    .dashboard{
+        margin-top: 5px;
+        text-align: right;
+
+    }
+
+    /*------------------------------------------------------------------------------ 
+    
+                                    HEADER LINKS
+    
+    ------------------------------------------------------------------------------*/
+    .dashboard-links{
+        .link,.list-item{font:{size: 11px; weight: 400;}; text-transform: uppercase; }
+        .list-item:not(:last-child):after {content:"\00a0|\00a0";}
+        .my-cart-link, .checkout-link{font-weight: 700;}
+    }
+
+    .quick-access-links{
+        display: inline-block;
+        .log-in-link,.register-link{
+            color: color(dark-gray); 
+            @include use-style(dark-gray-underline); 
+            @include height($height: 14px, $line-height: 17px);
+        }
+
+        .log-in-link:hover, .register-link:hover{
+            @include use-style(no-underline);
+        }
+        .list-item{font-size: 11px;line-height: 28px}
+
+    }
+
+}
+

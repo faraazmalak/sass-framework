@@ -1,0 +1,51 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+/************************
+    Default Config
+************************/
+$include-title-classes: true;
+
+$title-base:
+display block,
+text-transform none,
+line-height $base-line-height,
+margin 5px,
+padding 0;
+
+
+// Control header font sizes
+
+$page-title: font-size 104px;
+$page-subtitle: font-size 37px;
+$section-title: font-size 27px;
+$section-subtitle: font-size 23px;
+
+
+$title-nested-small: font-size 80%;
+
+
+/*------------------------------------------------------------------------------ 
+
+                                 CORE
+
+------------------------------------------------------------------------------*/
+@if $include-title-classes == true{
+
+    .page-title, .page-subtitle, .section-title, .section-subtitle {
+        //All titles
+        @include style($title-base);
+        .small{
+            @include style($title-nested-small);
+        }
+
+    }
+
+    .page-title  { @include style($page-title)};
+    .page-subtitle { @include style($page-subtitle) }
+    .section-title { @include style($section-title) }
+    .section-subtitle{ @include style($section-subtitle) }
+
+}

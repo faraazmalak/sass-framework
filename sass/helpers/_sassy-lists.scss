@@ -1,0 +1,584 @@
+// purge()
+// @doc http://sassylists.com/documentation/#purge
+@function purge($list) {
+    $result: ();
+
+    @each $item in $list {
+        @if $item and $item != "" {
+            $result: append($result, $item);
+        }
+    }
+
+    @return $result;
+}
+
+// purge() aliased as compact()
+/*@function compact($list) {
+    @return purge($list);
+}*/
+
+// purge() aliased as clean()
+@function clean($list) {
+    @return purge($list);
+}
+
+// first()
+// @doc http://sassylists.com/documentation/#first
+@function first($list) {
+    @return nth($list, 1);
+}
+
+// last()
+// @doc http://sassylists.com/documentation/#last
+@function last($list) {
+    @return nth($list, length($list));
+}
+
+// last-index()
+// @doc http://sassylists.com/documentation/#last-index
+@function last-index($list, $value) {
+
+    @for $i from length($list) * -1 through -1 {
+        @if nth($list, abs($i)) == $value {
+            @return abs($i);
+        }
+    }
+
+    @return null;
+}
+
+// to-string()
+// @doc http://sassylists.com/documentation/#to-string
+@function to-string($list, $glue: '', $root: true) {
+    $result: '';
+
+    @for $i from 1 through length($list) {
+        $item: nth($list, $i);
+
+        @if length($item) > 1 {
+            $result: $result + to-string($item, $glue, false);
+        }
+
+        @else {
+            $result: if($i != length($list) or not $root, $result + $item + $glue, $result + $item);
+        }
+    }
+
+    @return quote($result);
+}
+
+// to-string() aliased as stringify()
+@function stringify($list, $glue: '', $root: true) {
+    @return to-string($list, $glue, $root);
+}
+
+// prepend()
+// @doc http://sassylists.com/documentation/#prepend
+@function prepend($list, $value) {
+    @if $value != null and $value != "" {
+        @return join($value, $list);
+    }
+
+    @else {
+        @return $list;
+    }
+}
+
+
+// insert-nth()
+// @doc http://sassylists.com/documentation/#insert-nth
+@function insert-nth($list, $index, $value) {
+    $result: false;
+
+    @if type-of($index) != number {
+        @warn "List index #{$index} is not a number for `insert-nth`.";
+        @return $result;
+    }
+
+    @else if $index < 1 {
+        @warn "List index #{$index} must be a non-zero integer for `insert-nth`";
+        @return $result;
+    }
+
+    @else if $index > length($list) {
+        @return append($list, $value);
+    }
+
+    @else {
+        $result: ();
+
+        @for $i from 1 through length($list) {
+            @if $i == $index {
+                @if $value != null and $value != "" {
+                    $result: append($result, $value);
+                }
+            }
+
+            $result: append($result, nth($list, $i));
+        }
+    }
+
+    @return $result;
+}
+
+// replace-nth()
+// @doc http://sassylists.com/documentation/#replace-nth
+@function replace-nth($list, $index, $value) {
+    $result: false;
+
+    @if type-of($index) != number {
+        @warn "List index #{$index} is not a number for `replace-nth`/`remove-nth`.";
+        @return $result;
+    }
+
+    @else if $index == 0 {
+        @warn "List index 0 must be a non-zero integer for `replace-nth`/`remove-nth`.";
+        @return $result;
+    }
+
+    @else if abs($index) > length($list) {
+        @warn "List index is #{$index} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
+        @return $result;
+    }
+
+    @else {
+        $result: ();
+        $index: if($index < 0, length($list) + $index + 1, $index);  
+
+        @for $i from 1 through length($list) {
+           // @if $value != null and unquote($value) != null and $value != "" {
+                $result: append($result, if($i == $index, $value, nth($list, $i)));
+            //}
+        }
+    }
+
+    @return $result;
+}
+
+// replace()
+// @doc http://sassylists.com/documentation/#replace
+@function replace($list, $old-value, $new-value, $recursive: false) {
+    $result: ();
+
+    @each $item in $list {
+        @if $item == $old-value {
+            @if $new-value != '' and $new-value != null {
+                $result: append($result, $new-value);
+            }
+        }
+
+        @else if length($item) > 1 and $recursive {
+            $result: append($result, replace($item, $old-value, $new-value, $recursive));
+        }
+
+        @else {
+            $result: append($result, $item);
+        }
+    }
+
+    @return $result;
+}
+
+// remove-nth()
+// @doc http://sassylists.com/documentation/#remove-nth
+@function remove-nth($list, $index) {
+    @return replace-nth($list, $index, "");
+}
+
+// remove-nth() aliased as without-nth()
+@function without-nth($list, $index) {
+    @return remove-nth($list, $index);
+}
+
+// remove()
+// @doc http://sassylists.com/documentation/#remove
+@function remove($list, $value, $recursive: false) {
+    @return replace($list, $value, "", $recursive);
+}
+
+// remove() aliased as without()
+@function without($list, $value, $recursive: false) {
+    @return remove($list, $value, $recursive);
+}
+
+// slice()
+// @doc http://sassylists.com/documentation/#slice
+@function slice($list, $start: 1, $end: length($list)) {
+    $result: false;
+
+    @if type-of($start) != number or type-of($end) != number {
+        @warn "Either $start or $end are not a number for `slice`.";
+        @return $result;
+    }
+
+    @else if $start > $end {
+        @warn "The start index has to be lesser than or equals to the end index for `slice`.";
+        @return $result;
+    }
+
+    @else if $start < 1 or $end < 1 {
+        @warn "List indexes must be non-zero integers for `slice`.";
+        @return $result;
+    }
+
+    @else if $start > length($list) {
+        //@warn "List index is #{$start} but list is only #{length($list)} item long for `slice`.";
+        @return $result;
+    }
+
+    @else if $end > length($list) {
+        @warn "List index is #{$end} but list is only #{length($list)} item long for `slice`.";
+        @return $result;
+    }
+
+    @else {
+        $result: ();
+
+        @for $i from $start through $end {
+            $result: append($result, nth($list, $i));
+        }
+    }
+
+    @return $result;
+}
+
+// reverse()
+// @doc http://sassylists.com/documentation/#reverse
+@function reverse($list, $recursive: false) {
+    $result: ();
+
+    @for $i from length($list) * -1 through -1 {
+        $item: nth($list, abs($i));
+
+        @if length($item) > 1 and $recursive {
+            $result: append($result, reverse($item, $recursive));      
+        }
+
+        @else {
+            $result: append($result, $item);
+        }
+    }
+
+    @return $result;
+}
+
+// reverse() aliased as mirror()
+@function mirror($list, $recursive: false) {
+    @return reverse($list, $recursive);
+}
+
+// loop()
+// @doc http://sassylists.com/documentation/#loop
+@function loop($list, $value: 1) {
+    $result: ();
+
+    @for $i from 0 to length($list) {
+        $result: append($result, nth($list, ($i - $value) % length($list) + 1));
+    }
+
+    @return $result;
+}
+
+// loop() aliased as shift-indexes()
+@function shift-indexes($list, $value: 1) {
+    @return loop($list, $value);
+}
+
+// is-symmetrical()
+// @doc http://sassylists.com/documentation/#is-symmetrical
+@function is-symmetrical($list) {    
+    @return reverse($list) == reverse(reverse($list)); 
+}
+
+// is-symmetrical() aliased as is-mirror()
+@function is-mirror($list) {
+    @return is-symmetrical($list);
+}
+
+// sum()
+// @doc http://sassylists.com/documentation/#sum
+@function sum($list, $force: false) {
+    $result: 0;
+
+    @each $item in $list {
+        @if type-of($item) == number {
+            @if $force and unit($item) {
+                $item: $item / ($item * 0 + 1);
+            }
+            @if unitless($item) {
+                $result: $result + $item;
+            }
+        }
+    }
+
+    @return $result;
+}
+
+// chunk()
+// @doc http://sassylists.com/documentation/#chunk
+@function chunk($list, $size) {
+    @if $size >= length($list) {
+        @return $list;
+    }
+
+    $index  : 1;
+    $result : ();
+
+    @for $i from 1 through ceil(length($list) / $size) {
+        $tmp: ();
+
+        @for $j from 1 through $size {
+
+            @if $index <= length($list) {
+
+                $is-orphan: length($list) % $size == 1 and $j == 1;
+                $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
+
+            }
+
+            $index: $index + 1;
+        }
+
+        $result: append($result, $tmp);
+    }
+
+    @return $result;
+}
+
+// count-values
+// @doc http://sassylists.com/documentation/#count-values
+@function count-values($list) {
+    $keys   : ();
+    $counts : ();
+
+    @each $item in $list {
+        $index: index($keys, $item);
+
+        @if not $index {
+            $keys   : append($keys, $item);
+            $counts : append($counts, 1);
+        }
+
+        @else {
+            $count  : nth($counts, $index) + 1;
+            $counts : replace-nth($counts, $index, $count);
+        }
+    }
+
+    @return zip($keys, $counts);
+}
+
+// remove-duplicates()
+// @doc http://sassylists.com/documentation/#remove-duplicates
+@function remove-duplicates($list, $recursive: false) {
+    $result: ();
+
+    @each $item in $list {
+
+        @if not index($result, $item) {
+
+            @if length($item) > 1 and $recursive {
+                $result: append($result, remove-duplicates($item, $recursive));
+            }
+
+            @else {
+                $result: append($result, $item);
+            }
+
+        }
+
+    }
+
+    @return $result;
+}
+
+// remove-duplicates() aliased as unique()
+@function unique($list, $recursive: false) {
+    @return remove-duplicates($list, $recursive);
+}
+
+// debug()
+// @doc http://sassylists.com/documentation/#debug
+@function debug($list, $pre: false, $level: 1) {
+    $tab    : "    ";
+    $indent : "";
+    $break  : if($pre, "\A ", "");
+
+    @if length($list) == 0 {
+        @return "( )";
+    }
+
+    @if length($list) == 1 {
+        @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
+    }
+
+    @for $i from 1 to $level {
+        $indent : $indent + $tab;
+    }
+
+    $result: "[" + $break;
+
+    @for $i from 1 through length($list) {
+        $item: nth($list, $i);
+        $result: $result + if($pre, $indent + $tab, " ");
+
+        @if length($item) > 1 {
+            $result: $result 
+                + if($pre, "(list: " + length($item) + ") ", "") 
+                + debug($item, $pre, $level + 1);
+        }
+
+        @else {
+            @if $pre {
+                $result: $result + "(" + type-of($item) + ") ";
+            }
+
+            @if length($item) == 0 {
+                $result: $result + "( )";
+            }
+
+            @else if type-of($item) == string {
+                $result: $result + quote($item);
+            }
+
+            @else if $item == null {
+                $result: $result + "null";
+            }
+
+            @else {
+                $result: $result + $item;
+            }
+        }
+
+        @if $i != length($list) {
+            $result: $result + "," + $break;
+        }
+    }
+
+    $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
+
+    @return quote($result);
+}
+
+// debug() mixin
+// @doc http://sassylists.com/documentation/#debug-mixin
+@mixin debug($list) {
+    body:before {
+        content: debug($list, true)               !important;
+
+        display: block                            !important;
+        margin: 1em                               !important;
+        padding: .5em                             !important; 
+
+        background: #EFEFEF                       !important;
+        border: 1px solid #DDD                    !important;
+        border-radius: .2em                       !important;
+
+        color: #333                               !important;
+        font: .75em/1.5 "Courier New", monospace  !important;
+        text-shadow: 0 1px white                  !important;
+        white-space: pre-wrap                     !important;
+    }
+}
+
+
+// sort()
+// @doc http://sassylists.com/documentation/#sort
+@function sort($list) {
+    $result : nth($list, 1);
+
+    @if length($list) > 1 {
+        @for $i from 2 through length($list) {
+            $item: nth($list, $i);
+            @if type-of($item) == number and unitless($item) { 
+                @if $item > last($result) {
+                    $result: append($result, $item);
+                }
+                @else {
+                    $index: 0;
+                    @for $i from length($result)*-1 through -1 {
+                        $i: abs($i);
+                        @if $item <= nth($result, $i) {
+                            $index: $i;
+                        }
+                    }
+                    $result: insert-nth($result, $index, $item); 
+                }
+            }
+            @else {
+                @warn "Not unitless number found. Omitted.";
+            }
+        }
+    }
+
+    @return $result;
+}
+
+// sort() aliased as order()
+@function order($list, $force: false) {
+    @return sort($list, $force);
+}
+
+
+// union()
+// @doc http://sassylists.com/documentation/#union
+@function union($lists...) {
+    @return remove-duplicates(flatten($lists));
+}
+
+// union() aliased as merge()
+@function merge($lists...) {
+    @return union($lists...);
+}
+
+// flatten()
+// @doc http://sassylists.com/documentation/#flatten
+@function flatten($list) {
+    $result: ();
+
+    @each $item in $list {
+        @if length($item) > 1 {
+            @each $i in flatten($item) {
+                $result: append($result, $i, space);
+            }
+        }
+
+        @else {
+            $result: append($result, $item, space);
+        }
+    }
+
+    @return $result;
+}
+
+// flatten() aliased as unfold()
+@function unfold($list) {
+    @return flatten($list);
+}
+
+// contain()
+// @doc http://sassylists.com/documentation/#contain
+@function contain($list, $value) {
+    @return not not index($list, $value)
+}
+
+// contain() aliased as include()
+@function include($list, $value) {
+    @return contain($list, $value);
+}
+
+// random-value()
+// @doc http://sassylists.com/documentation/#random-value
+@function random-value($list) {
+    @return nth($list, random(length($list)) + 1);
+}
+
+// random-value() aliased as roll()
+@function roll($list) {
+    @return random-value($list);
+}
+
+// random-value() aliased as luck()
+@function luck($list) {
+    @return random-value($list);
+}

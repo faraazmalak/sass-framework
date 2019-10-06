@@ -1,0 +1,16 @@
+
+$icon-button-background-color: $primary-color !default;
+$icon-button-border-width: $icon-button-border-width !default;
+$icon-button-border-style: $icon-button-border-style !default;
+$icon-button-font-color: $button-font-color !default; 
+$icon-button-padding: 0 !default;
+
+.button.icon-button{
+
+    background-color: $icon-button-background-color; 
+    border-style: $icon-button-border-style;
+    border-width: $icon-button-border-width;
+    color: $icon-button-font-color;
+    padding: $icon-button-padding;
+
+}

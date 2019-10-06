@@ -1,0 +1,64 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+
+
+$include-vcard-classes: true;
+
+
+//hCard 
+$full-name: null ;
+$nick-name: null ;
+$organization: null ;
+$photo: null ;
+$url: $url-link-internal ;
+$email: $email-link ;
+$telephone: $phone-work ;
+
+$address: null ;
+$address-street: null ;
+$address-locality: null ;
+$address-region: null ;
+$address-zip: null ;
+$address-country: null ;
+
+$birthday: null ;
+$category: null ;
+$note: null ;
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                                  CORE
+
+------------------------------------------------------------------------------*/
+
+@if $include-vcard-classes{
+    .vcard{
+        .fn{@include style($full-name);}
+        .n{@include style($nick-name);}
+        .org{@include style($organization);}
+        .photo{@include style($photo);}
+        .email{@include style($email);}
+        .telephone{@include style($telephone);}
+        
+        .adr{
+            .street-address{@include style($address-street);}
+            .locality{@include style($address-locality);}
+            .region{@include style($address-region);}
+            .postal-code{@include style($address-zip);}
+            .country-name{@include style($address-country);}
+        }
+        
+        .bday{@include style($birthday);}
+        .category{@include style($category);}
+        .note{@include style($note);}
+        
+    }
+}
+
+
+

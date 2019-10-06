@@ -1,0 +1,33 @@
+/*------------------------------------------------------------------------------ 
+
+                                CONFIGURATION
+
+------------------------------------------------------------------------------*/
+$include-abbreviation-classes: false;
+
+$abbreviation-config: null;
+
+
+
+
+/*------------------------------------------------------------------------------ 
+
+                                    CORE
+
+------------------------------------------------------------------------------*/
+%abbreviation-normalize{
+    //
+    // Abbreviation styling not present in IE 8/9, Safari 5, and Chrome.
+    //
+
+    abbr[title] {
+        border-bottom: none;
+    }
+}
+
+@if $include-abbreviation-classes{
+    .abbreviation{
+        @extend %abbreviation-normalize;
+        @include style($abbreviation-config);
+    }
+}

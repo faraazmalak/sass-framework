@@ -1,0 +1,67 @@
+/*============================================================================== 
+
+                               CONFIGURATION
+
+===============================================================================*/
+$include-text-box-classes: tue;
+$base-text-box-config: 
+border (width 1px, style solid, color color(medium-gray)),
+class 'inset-shadow-light',
+font (size 12px, weight 400),
+color color(dark-gray);
+
+
+/*============================================================================== 
+
+                                  CORE
+
+==============================================================================*/
+@if $include-text-box-classes{
+    .text-box{
+        @include style($base-text-box-config);
+    }
+}
+
+//Mixins
+@mixin text-box-size($size){
+    $size: unquote('%'+ $size +'-text-box');
+    @extend #{$size};
+}
+@mixin text-box-style($style){
+    @include use-style($style);
+}
+@mixin textbox($text-box){
+    @include use-style($text-box);
+}
+
+/*============================================================================== 
+
+                          CUSTOM TEXTBOX STYLES
+
+==============================================================================*/
+
+//Textbox Sizes
+%tiny-text-box{
+    //NO Styles
+}
+
+%small-text-box{
+    @include height(23px);
+    width: 185px;
+    padding: 3px 7px;
+    
+}
+
+%medium-text-box{
+    padding: 0 32px;
+    font-size: 15px;
+    @include height(27px);
+}
+
+%large-text-box{
+    //No Styles
+}
+
+%jumbo-text-box{
+    //No Styles
+}

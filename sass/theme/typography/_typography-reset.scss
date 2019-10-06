@@ -1,0 +1,60 @@
+/* Typography resets */
+body,
+div,
+dl,.dl,
+dt,.definition-term,
+dd,.definition-description,
+.list,
+ul,.list-unordered
+ol,list-ordered,
+li,.list-item,
+a,.link,
+.h1,.heading1,
+.h2,.heading2,
+.h3,.heading3,
+.h4,.heading4,
+.h5,.heading5,
+.h6,.heading6,
+.pre,
+form,
+.p,
+.blockquote,
+.small,
+.th,
+.td {
+    font:{
+        family: inherit;
+        size: $base-font-size;
+        weight: $base-font-weight;
+    };
+    $line-height: line-height-base;
+
+    letter-spacing: $base-letter-spacing;
+    word-spacing: $base-word-spacing;
+
+    margin: 0;
+    padding: 0;
+    border: none;
+
+}
+
+html,body{font-family: $base-typeface;}
+
+img,
+.img{
+    border: 0; 
+    margin: 0; 
+    padding: 0
+}
+
+
+html{
+    //
+    // 1. Set default font family to sans-serif.
+    // 2. Prevent iOS text size adjust after orientation change, without disabling
+    //    user zoom.
+    //
+    -webkit-text-size-adjust: 100%; // 2
+    -ms-text-size-adjust: 100%; // 2
+}
+

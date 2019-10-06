@@ -1,0 +1,58 @@
+
+
+.link.sprite-img.hide-text{
+
+ 
+  text-indent: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+
+}
+
+/************************************Social-Icons**************************/
+@import "icons/social/*.png";
+@include all-social-sprites;
+
+.link.social-sprite{
+  width: 36px;
+  height: 34px;
+}
+
+/************************************Advertising-Partner-Logos**************************/
+
+@import "icons/partners/*.png";
+
+ .partners-sprite.partners-cbso{
+     @include partners-sprite(cbso);
+     width: 93px;
+     height: 29px;
+     
+ }
+
+ .partners-sprite.partners-forbes{
+     @include partners-sprite(forbes);
+     width: 73px;
+     height: 29px;
+    
+ }
+    
+ .partners-sprite.partners-wwd{
+     @include partners-sprite(wwd);
+     width: 94px;
+     height: 36px;
+     
+ }
+
+ .partners-sprite.partners-boston-globe{
+     @include partners-sprite(boston-globe);
+     height: 26px;
+     width: 111px;
+ }
+    
+ .partners-sprite.partners-inc{
+     @include partners-sprite(inc);
+     width: 81px;
+     height: 29px;
+     
+ }
+

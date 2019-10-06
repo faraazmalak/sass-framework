@@ -1,0 +1,38 @@
+@import 'helpers/sassy-lists';
+@import 'helpers/css-parser';
+
+
+//$config: hover (font-weight bold), focus (color pink);
+//$config: hover (font (weight bold));
+//$config: hover (font-weight bold), focus (background (color pink));
+//$config: hover (font (weight bold, size 12px)), focus (border (color pink));
+//$config: hover (font (weight bold, size 12px)), focus (background (color pink)), display none;
+//$config: display none, hover (font (weight bold, size 12px)), focus (background (color pink));
+//$config: hover (font (weight bold, size 12px));
+//$config: font-weight bold, font-size normal;
+
+//$config: font-weight bold,  hover (font (weight bold, size 12px)), font-size normal, focus (border (color pink));
+//$config: font-weight bold;
+//$config: font-weight bold, font-size normal, text (transform none, indent 2px);
+//$config: font-weight bold, font-size normal, text (transform none, indent 2px), border (left 0, right 3px);
+//$config: font-weight bold, font-size normal, focus (background (color pink)), text (transform none, indent 2px), hover (font (weight bold, size 12px)), border (left 0, right 3px);
+//$config: font-weight bold, font-size normal, text (transform none);
+//$config: font-weight bold, font-size normal, text (transform none), focus (text (transform uppercase));
+
+//$config: text (transform none,indent 2px,spacing 5px);
+//$config: text (transform 2px);
+$config: text (transform 2px),  margin '0 2px 0 9px';
+//$config: font-weight bold, hover (color pink);
+//$config: text-transform uppercas, font (weight 500, style italic), focus (color blue, text-transform uppercase), hover ( background (color pink)), display none ;
+//$config: text-transform lowercase, font (weight 500, style italic), hover ( text (indent 20px, transform none)), focus ( text (indent 40px, decoration underline)), display none ;
+//$config: hover (font-weight bold);
+//$config: hover (font-weight bold, color green);
+//$config: background pink, hover (font-weight bold, color red);
+//$config: margin 2px;
+.faraaz{ 
+    //@debug $config;
+    @include style($config);
+    
+}
+
+

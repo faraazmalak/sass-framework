@@ -1,0 +1,28 @@
+$button-font-size:                  12px;
+$button-font-weight:                normal;
+
+$button-default-color:              #333;
+$button-default-bg:                 #fff;
+$button-default-border:             #ccc;
+
+$button-primary-color:              #fff;
+$button-primary-bg:                 #ffffff;
+$button-primary-border:             darken(#fff, 5%);
+
+$button-success-color:              #fff;
+$button-success-bg:                 #fff;
+$button-success-border:             darken(#fff, 5%);
+
+$button-warning-color:              #fff;
+$button-warning-bg:                 #fff;
+$button-warning-border:             darken(#fff, 5%);
+
+$button-danger-color:               #fff;
+$button-danger-bg:                  red;
+$button-danger-border:              darken(red, 5%);
+
+$button-info-color:                 #fff;
+$button-info-bg:                    blue;
+$button-info-border:                darken(blue, 5%);
+
+$button-link-disabled-color:        $light-gray;

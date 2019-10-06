@@ -1,0 +1,612 @@
+
+
+
+
+
+@function is-prefix($target-prefix){
+
+    $prefix-lookup-list:
+
+        'animation',
+
+        'background',
+
+        'border',
+
+        'counter',
+
+        'font',
+
+        'text',
+
+
+        'list-style',
+
+        'min',
+        'max',
+
+
+        'margin',
+
+
+        'outline',
+
+        'overflow',
+
+        'page-break',
+
+        'rotation',
+
+
+
+        'target',
+
+
+        'transform',
+
+
+        'transition',
+
+
+
+        'word',
+
+
+        'padding'
+
+
+
+        ;
+
+    @each $prefix in $prefix-lookup-list{
+
+        @if $prefix == nth($target-prefix,1){
+            //@debug PREFIX $target-prefix TRUE;
+            @return true;
+        }
+    }
+
+    //@debug PREFIX $target-prefix FALSE;
+    @return false;
+
+
+
+}
+
+
+
+@function is-property($target-property){
+
+    $property-lookup-list:
+
+        'animation',
+        'animation-name',
+        'animation-duration',
+        'animation-timing-function',
+        'animation-delay',
+        'animation-iteration-count',
+        'animation-direction',
+        'animation-play-state',
+
+        'appearance',
+
+        'backface-visibility',
+
+        'background',
+        'background-attachment',
+        'background-color',
+        'background-image',
+        'background-position',
+        'background-repeat',
+        'background-clip',
+        'background-origin',
+        'background-size',
+
+        'border',
+        'border-bottom',
+        'border-bottom-color',
+        'border-bottom-style',
+        'border-bottom-width',
+        'border-collapse',
+        'border-color',
+        'border-left',
+        'border-left-color',
+        'border-left-style',
+        'border-left-width',
+        'border-right',
+        'border-right-color',
+        'border-right-style',
+        'border-right-width',
+        'border-spacing',
+        'border-style',
+        'border-top',
+        'border-top-color',
+        'border-top-style',
+        'border-top-width',
+        'border-width',
+        'border-bottom-left-radius',
+        'border-bottom-right-radius',
+        'border-image',
+        'border-image-outset',
+        'border-image-repeat',
+        'border-image-slice',
+        'border-image-source',
+        'border-image-width',
+        'border-radius',
+        'border-top-left-radius',
+        'border-top-right-radius',
+
+        'caption-side',
+
+        'clear',
+
+        'clip',
+
+        'color',
+
+        'content',
+
+        'counter-increment',
+        'counter-reset',
+
+        'cursor',
+
+        'direction',
+
+        'display',
+
+        'empty-cells',
+
+        'float',
+
+        'font',
+        'font-family',
+        'font-size',
+        'font-style',
+        'font-variant',
+        'font-weight',
+        '@font-face',
+        'font-size-adjust',
+        'font-stretch',
+
+        'text-align',
+        'text-decoration',
+        'text-indent',
+        'text-justify',
+        'text-outline',
+        'text-overflow',
+        'text-shadow',
+        'text-transform',
+        'text-wrap',
+
+
+        'line-height',
+        'letter-spacing',
+
+        'list-style',
+        'list-style-image',
+        'list-style-position',
+        'list-style-type',
+
+        'hanging-punctuation',
+
+        'height',
+        'min-height',
+        'max-height',
+        'width',
+        'min-width',
+        'max-width',
+
+        'icon',
+
+        'margin',
+        'margin-left',
+        'margin-right',
+        'margin-top',
+        'margin-bottom',
+
+        'opacity',
+
+        'outline',
+        'outline-color',
+        'outline-offset',
+        'outline-style',
+        'outline-width',
+
+        'overflow',
+        'overflow-x',
+        'overflow-y',
+
+        'page-break-after',
+        'page-break-before',
+        'page-break-inside',
+
+        'position',
+
+        'punctuation-trim',
+
+        'quotes',
+
+        'resize',
+
+        'rotation',
+
+        'rotation-point',
+
+        'table-layout',
+
+        'target',
+        'target-name',
+        'target-new',
+        'target-position',
+
+        'transform',
+        'transform-origin',
+        'transform-style',
+
+        'transition',
+        'transition-property',
+        'transition-duration',
+        'transition-timing-function',
+        'transition-delay',
+
+        'vertical-align',
+
+        'visibility',
+
+        'white-space',
+
+        'word-spacing',
+
+        'word-break',
+
+        'word-wrap',
+
+        'z-index',
+
+        'padding',
+        'padding-left',
+        'padding-right',
+        'padding-top',
+        'padding-bottom',
+
+        'top',
+        'right',
+        'bottom',
+        'left',
+
+        'position'
+        'display',
+
+
+        'class';
+
+    @each $property in $property-lookup-list{
+
+        @if $property == to-string($target-property){
+
+            @return true;
+
+        }
+    }
+
+
+    @return false;
+
+
+
+}
+
+
+
+
+
+@function validate-config($list){
+    $i: false;
+    $list: purge(flatten($list));
+
+    @if length($list) > 0{$i: 1}
+
+    @while $i != false{
+        $property-name: nth($list,$i);
+
+        @if is-property($property-name) == false{
+            $list: replace-nth($list,$i,null);
+            $list: replace-nth($list,$i+1,null);
+            @warn Invalid CSS property $property-name;
+        }
+
+        @if ($i + 2) > length($list) {$i: false}
+        @else{$i: $i + 2;}
+    }
+    @return purge(flatten($list));
+}
+
+@function merge($prefix,$list){
+    $output-list: null;
+    // $prefix: unquote(to-string($prefix,''));
+    //@debug PREFIX $prefix is-prefix($prefix) type-of($prefix) $list;
+
+
+    $list: flatten($list);
+    //    $state: to-string($state);
+    //@debug INSIDE MERGE $list;
+    //@debug LIST $list LENGTH length(purge($list));
+    $i:false;
+    
+    @if length($list) >= 2{
+        $i: 1;
+    }
+    @else{
+        //@debug PITFALL;
+        $output-list: append($output-list,union($prefix,nth($list,1)));
+    }
+    
+    @while $i !=false{
+        //$property-name: unquote(nth($list,$i));
+        // @debug PREFIX $prefix nth($list,1) $i $list length($list);
+        $property-name: unquote($prefix + '-' + nth($list,$i));
+
+        //@if $return-list != null{$property-name: unquote(', '+$property-name)}
+        $property-value: nth($list,$i+1);
+        $property-value:  $property-value;
+        //@if $is-important {$property-value: unquote($property-value + '!important');}
+        //@debug LOCAL PROPERTY NAME $property-name VALUE $property-value;
+        $output-list: append($output-list, union($property-name,$property-value));
+
+
+
+
+        @if ($i + 2) > length($list) {$i: false}
+        @else{$i: $i + 2;}
+    }
+
+
+
+    //@debug OUTPUT LIST $output-list LENGTH length(flatten($output-list));
+
+
+    $output-list: flatten($output-list);
+    @return $output-list;
+}
+
+
+
+
+@function normalize($config-list, $current-state: normal){
+
+    // @debug ORIGINAL CONFIG $config-list ;
+    //$current-state: normal;
+    //@debug CURRENT STATE1 $current-state;
+    $iteration: 1;
+    @each $config in $config-list{
+
+
+        // @debug SLICING length(flatten($config)) $config;
+
+
+        //@debug Before Slice $config;
+        $key: slice(flatten($config),1,1);
+
+        // @debug PREFIX slice(flatten($config),1,1) is-prefix(slice(flatten($config),1,1)) ;
+        @if  is-prefix($key)  and length(flatten($config)) >= 2 {
+
+            //@debug INSIDE IF replace-nth($config-list,3,'null');
+
+         
+            // $key: slice(flatten($config),1,1);
+
+            $value: slice(flatten($config),2,length(flatten($config)));
+            //@debug FIRST IF  $value LENGTH length($value);
+
+            // @debug OH NOOOO;
+
+   //@debug FIRST IF KEY $key VALUE $value ;
+
+            // @debug MERGED merge($key,$value);
+
+            // @debug CURRENT STATE $current-state append($config-list,merge($key,$value));
+
+            //length($value) > 1 used when property and prefix are the same
+            //eg. transform of text-transform and the prefix transform
+
+            @if $iteration != false {
+                
+                $config-list: replace-nth($config-list,$iteration,null);
+                $config-list:append($config-list,merge($key,$value)); 
+            }
+
+            //$temp: add-to-state($config-list,$key);
+            // $iteration: $iteration + 1;
+
+
+        }
+        @else if  is-prefix($key)  and length(flatten($config)) == 1{
+//            @debug SECOND IF $config;
+            
+            $value: slice(flatten($config-list),2,length(flatten($config-list)));
+            $config-list: null;
+           
+            //@debug LIST TO BE MERGED $value;
+            //$config-list: replace-nth($config-list,$iteration,null);
+            $config-list:append($config-list,merge($key,$value));
+             //@debug SECOND IF $config-list ;
+             @if ($iteration + 2) <= length($config-list){
+                 $iteration: $iteration + 2;
+             }@else{$iteration: false;}
+        }
+
+        @else if is-state($key) == true{
+            //@debug THIRD IF;
+
+            //$value: slice(flatten($config),2,length(flatten($config)));
+            //$value: append($value,'raw');
+
+            // @debug KEY $key VALUE $value ;
+            $value: null;
+            @if length(flatten($config)) == 1{
+                $value: nth($config-list,2);
+
+                $config-list: null;
+                /*$config-list: replace-nth($config-list,$iteration,null);
+                $config-list: replace-nth($config-list,$iteration+1,null);*/
+
+                //$config-list: no-style;
+                //@debug PITFALL 1 $current-state $config-list;
+                //$config-list: replace-nth($config-list,$iteration+2,null);  
+            }
+            @else{
+                //@debug PITFALL 2 $iteration;
+                $value: nth($config,2);
+
+                // @if $iteration != false{
+                $config-list: replace-nth($config-list,$iteration,null);
+                // }
+
+            }
+            //@debug ORIGINAL CONFIG $config-list ;
+            //@debug Iteration VALUE Length nth(append($config,'no-style'),2);
+            //  @if length($config) == 2{$value:prepend($value,unquote(no-style+','));}
+
+
+
+
+
+            $current-state: $key;
+            //@debug ITERATION LIST $value length(flatten($value)) $current-state;
+            //@debug STATE DETECTED $iteration $config-list;
+            // $config-list: normalize(purge($value));
+            //$temp: add-to-state(normalize($value,$current-state),$current-state);
+            //@debug RECURSION FOR STATE $current-state;
+            // @if length($config-list) == 2{@debug CAUGHT; $config-list: null}
+            $temp: normalize($value,$current-state);
+            $current-state: normal;
+            @if length(flatten($config)) == 1 {$iteration: false;}
+
+            //$config-list: null;
+            //@debug HOVER RAW $hover-state-raw;
+
+        }
+        //@debug CONFIG LIST $config-list $iteration;
+        @if $iteration != false{
+            $iteration: $iteration + 1;
+        }
+
+
+
+
+    }
+
+
+    //$current-state: normal;
+    // @if $current-state == normal {$normal-config}
+
+    //@debug FUNCTION END;
+
+    //$temp: ;
+    //@debug RETURN CONFIG LIST $config-list $iteration CUURENT STATE $current-state;
+    @return add-to-state($config-list,$current-state);
+
+
+}
+
+
+@mixin print-css($list,$list-type: normal){
+
+    $i: false;
+    @if $list != null and length($list) > 0 {$i: 1;}
+
+    @while $i != false{
+
+        $property-name: nth($list,$i);
+        $property-value: nth($list,$i+1);
+
+        @if $list-type != normal {$property-value: unquote($property-value + ' !important')}
+
+        @if $property-name == class{
+            $property-value: unquote('%'+$property-value);
+            @extend #{$property-value};
+        }@else if $property-name == height and contain($list, line-height) == false{
+            
+            @include height($property-value);
+        }
+        @else {
+            #{$property-name}:#{$property-value};
+        }
+
+        @if ($i + 2) > length($list) {$i: false}
+        @else{$i: $i + 2;}
+
+    }
+}
+
+
+$states: normal hover focus active visited link;
+$master-config: null;
+
+
+@function init-master-config($states:$states){
+    $i: 1;
+    @each $state in $states{
+        $master-config: insert-nth($master-config,$i,$state);
+        $master-config: insert-nth($master-config,$i+1,null);
+
+        $i: $i + 2;
+    }
+    @return $master-config;
+}
+@function add-to-state($value,$state:normal){
+    //@debug STATE REQUEST $state VALUE $value is-state($state);
+
+    @if is-state($state) and type-of(flatten($value)) == list{
+
+        $state: to-string($state);
+        $value: validate-config($value);
+
+        $master-config: replace-nth($master-config,index($master-config,$state)+1,$value);
+
+        //@debug MASTER CONFIG FUNCTION $master-config;
+    }
+
+
+    @return true;
+
+}
+
+@function get-config($state,$master-config:$master-config){
+    @return nth($master-config,index($master-config,$state)+1);
+}
+@function is-state($state){
+
+    $state: to-string($state);
+
+    /* @if $state == hover or $state == click or $state == active or $state == focus or $state == normal{
+ 
+         @return true;
+     }
+     @else{
+         //@debug SATET  $state FALSE;
+         @return false;
+     }*/
+    @return contain($states,$state);
+}
+
+@mixin style($config-list){
+
+    @if $config-list != null{
+        $temp:init-master-config();
+        $temp: normalize($config-list);
+
+        @each $state in $states{
+            @if $state == normal{
+                @include print-css(get-config($state));
+            }@else{
+                &:#{$state}{@include print-css(get-config($state),$state);}
+            }
+        }
+        
+        $master-config: null;
+    }
+
+
+}
